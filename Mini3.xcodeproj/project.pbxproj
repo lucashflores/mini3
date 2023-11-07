@@ -13,6 +13,7 @@
 		C1DF601B2AF995B900F0812C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DF601A2AF995B900F0812C /* Preview Assets.xcassets */; };
 		C1DF601D2AF995B900F0812C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF601C2AF995B900F0812C /* Persistence.swift */; };
 		C1DF60202AF995B900F0812C /* Mini3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */; };
+		C1DF60282AF998D700F0812C /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = C1DF60272AF998D700F0812C /* Map */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DF60282AF998D700F0812C /* Map in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +91,9 @@
 			dependencies = (
 			);
 			name = Mini3;
+			packageProductDependencies = (
+				C1DF60272AF998D700F0812C /* Map */,
+			);
 			productName = Mini3;
 			productReference = C1DF60102AF995B800F0812C /* Mini3.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = C1DF60072AF995B800F0812C;
+			packageReferences = (
+				C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */,
+			);
 			productRefGroup = C1DF60112AF995B800F0812C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +360,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pauljohanneskraft/Map";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1DF60272AF998D700F0812C /* Map */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */;
+			productName = Map;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */ = {
