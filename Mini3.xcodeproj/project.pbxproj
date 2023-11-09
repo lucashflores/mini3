@@ -10,8 +10,9 @@
 		A7250ABA2AFA78FD00B34A61 /* TourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7250AB92AFA78FD00B34A61 /* TourModel.swift */; };
 		A7250ABD2AFA7AD000B34A61 /* TourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7250ABC2AFA7AD000B34A61 /* TourManager.swift */; };
 		A7250ABF2AFA7D3200B34A61 /* ToursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7250ABE2AFA7D3200B34A61 /* ToursView.swift */; };
-		A7BE65E52AFC915D002931FF /* PointsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE65E42AFC915D002931FF /* PointsManager.swift */; };
+		A7BE65E52AFC915D002931FF /* PlacesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE65E42AFC915D002931FF /* PlacesManager.swift */; };
 		A7BE65E72AFC91D1002931FF /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE65E62AFC91D1002931FF /* PlaceModel.swift */; };
+		A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA98E2AFD01B900CB1146 /* PointsView.swift */; };
 		C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60132AF995B800F0812C /* Mini3App.swift */; };
 		C1DF60162AF995B800F0812C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60152AF995B800F0812C /* ContentView.swift */; };
 		C1DF60182AF995B900F0812C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DF60172AF995B900F0812C /* Assets.xcassets */; };
@@ -25,8 +26,9 @@
 		A7250AB92AFA78FD00B34A61 /* TourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourModel.swift; sourceTree = "<group>"; };
 		A7250ABC2AFA7AD000B34A61 /* TourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourManager.swift; sourceTree = "<group>"; };
 		A7250ABE2AFA7D3200B34A61 /* ToursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToursView.swift; sourceTree = "<group>"; };
-		A7BE65E42AFC915D002931FF /* PointsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsManager.swift; sourceTree = "<group>"; };
+		A7BE65E42AFC915D002931FF /* PlacesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesManager.swift; sourceTree = "<group>"; };
 		A7BE65E62AFC91D1002931FF /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		A7FAA98E2AFD01B900CB1146 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		C1DF60102AF995B800F0812C /* Mini3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DF60132AF995B800F0812C /* Mini3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3App.swift; sourceTree = "<group>"; };
 		C1DF60152AF995B800F0812C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				A7250ABC2AFA7AD000B34A61 /* TourManager.swift */,
-				A7BE65E42AFC915D002931FF /* PointsManager.swift */,
+				A7BE65E42AFC915D002931FF /* PlacesManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				A7250ABE2AFA7D3200B34A61 /* ToursView.swift */,
+				A7FAA98E2AFD01B900CB1146 /* PointsView.swift */,
 				C1DF60152AF995B800F0812C /* ContentView.swift */,
 			);
 			path = Views;
@@ -196,7 +199,8 @@
 				A7250ABD2AFA7AD000B34A61 /* TourManager.swift in Sources */,
 				C1DF60202AF995B900F0812C /* Mini3.xcdatamodeld in Sources */,
 				C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */,
-				A7BE65E52AFC915D002931FF /* PointsManager.swift in Sources */,
+				A7BE65E52AFC915D002931FF /* PlacesManager.swift in Sources */,
+				A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */,
 				A7BE65E72AFC91D1002931FF /* PlaceModel.swift in Sources */,
 				A7250ABF2AFA7D3200B34A61 /* ToursView.swift in Sources */,
 			);

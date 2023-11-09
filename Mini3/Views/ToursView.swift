@@ -16,7 +16,7 @@ struct ToursView: View {
     
     
     var body: some View {
-       VStack {
+       NavigationStack {
            
            TextField("Enter tour name: ", text: $tourName)
            Button {
@@ -26,11 +26,9 @@ struct ToursView: View {
            }
            
            List(tourModels, id: \.id) { tour in
-               Text(tour.name)
-                   .onLongPressGesture{
-                       editTour(id: tour.id, name: "hola")
-                       
-                   }
+               NavigationLink(destination: PointsView(tourId: tour.id)) {
+                   Text(tour.name)
+               }
            }
            .onAppear {
                
