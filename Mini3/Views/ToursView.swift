@@ -25,10 +25,18 @@ struct ToursView: View {
                Text("adicionar")
            }
            
-           List(tourModels, id: \.id) { tour in
-               NavigationLink(destination: PointsView(tourId: tour.id)) {
-                   Text(tour.name)
+           List{
+               
+               ForEach(tourModels, id: \.id) { tour in
+                   NavigationLink(destination: PointsView(tourId: tour.id)) {
+                       Text(tour.name)
+                   }
                }
+               .onMove(perform: move)   
+           }
+           
+           .toolbar {
+               EditButton()
            }
            .onAppear {
                
@@ -48,7 +56,7 @@ struct ToursView: View {
     func deleteTour(id: UUID){
         tourManager.deleteTour(tourId: id)
         update()
-    }
+    }   
     
     func editTour(id: UUID, name: String?){
         tourManager.editTour(id: id, name: name)
@@ -58,6 +66,11 @@ struct ToursView: View {
     func update() {
         
         tourModels = tourManager.fetchAllTourModels()
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        tourModels.move(fromOffsets: source, toOffset: destination)
+        tourManager.saveOrder(tourList: tourModels)
     }
 }
 

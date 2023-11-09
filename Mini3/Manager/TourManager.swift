@@ -100,5 +100,8 @@ class TourManager: ObservableObject {
         }
     }
 
+    func saveOrder(tourList: [TourModel]) {
+        
+    }
     // You can add more methods for specific querying and management operations as needed.
 }
