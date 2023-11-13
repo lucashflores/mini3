@@ -16,18 +16,17 @@ class PlacesManager: ObservableObject {
     init(controller: PersistenceController) {
         self.controller = controller
     }
-    
-    
 
     // Create a new place.
-    func createPoint(place: PlaceModel) {
-        print("create")
+    func createPoint(place: PlaceModel, allPlaces: [PlaceModel]) {
+        
         let newPlace = Place(context: controller.container.viewContext)
         
         newPlace.id = place.id
         newPlace.name = place.name
         newPlace.notes = place.notes
         newPlace.tour = getTour(tourId: place.tourId!)
+        newPlace.orderNumber = Int16(allPlaces.count)
 //        newplace.picture = place.picture + TO-DO
         
         controller.save() /*+ TO-DO*/
@@ -80,7 +79,9 @@ class PlacesManager: ObservableObject {
                 return PlaceModel(
                     id: place.id ?? UUID(),
                     name: place.name ?? "", // TO-DO: picture
-                    notes: place.notes
+                    orderNumber: Int(place.orderNumber),
+                    notes: place.notes,
+                    tourId: place.tour?.id
                 )
             }
             return placeModels
@@ -101,6 +102,7 @@ class PlacesManager: ObservableObject {
                     let aux = PlaceModel(
                         id: place.id ?? UUID(),
                         name: place.name ?? "", // TO-DO: picture
+                        orderNumber: Int(place.orderNumber),
                         notes: place.notes,
                         tourId: place.tour?.id
                     )
@@ -112,6 +114,36 @@ class PlacesManager: ObservableObject {
             print("Error fetching places and converting to placeModel: \(error)")
             return []
         }
+    }
+    
+    func saveOrder(placesList: [PlaceModel], tourId: UUID){
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+
+        do {
+            let places = try controller.container.viewContext.fetch(fetchRequest)
+            var placeModels: [PlaceModel] = []
+            for place in places {
+                if place.tour?.id == tourId{
+                    
+                    for (index, placeItem) in placesList.enumerated(){
+                        if placeItem.id == place.id {
+                            place.orderNumber = Int16(index)
+                        }
+                    }
+                    let aux = PlaceModel(
+                        id: place.id ?? UUID(),
+                        name: place.name ?? "", // TO-DO: picture
+                        orderNumber: Int(place.orderNumber),
+                        notes: place.notes,
+                        tourId: place.tour?.id
+                    )
+                    placeModels.append(aux)
+                }
+            }
+        } catch {
+            print("Error fetching places and converting to placeModel: \(error)")
+        }
+        
     }
     
     private func getTour(tourId: UUID) -> Tour? {

@@ -28,24 +28,28 @@ struct PointsView: View {
                Text("adicionar")
            }
            
-           List(placeModels, id: \.id) { tour in
-               Text(tour.name)
-//                   .onLongPressGesture{
-//                       editPlace(id: tour.id, name: "hola")
-//                       
-//                   }
+           List{
+               ForEach(placeModels, id: \.id) { place in
+                   Text(place.name)
+               }
+               .onMove(perform: move)
            }
-           .onAppear {
-               
-               // Fetch the TourModels when the view appears
-               placeModels = placesManager.fetchAllPlaceByTour(tourId: tourId)
+           .toolbar {
+               EditButton()
            }
+           
        }
+       .onAppear {
+           
+           update()
+       }
+       .navigationTitle("Add Stops")
+        
     }
     
     func addPlace(){
-        let newPlace = PlaceModel(name: placeName, tourId: tourId)
-        placesManager.createPoint(place: newPlace)
+        let newPlace = PlaceModel(name: placeName, orderNumber: -1, tourId: tourId)
+        placesManager.createPoint(place: newPlace, allPlaces: placeModels)
         update()
         
     }
@@ -60,9 +64,18 @@ struct PointsView: View {
         update()
     }
     
-    func update() {
-        placeModels = placesManager.fetchAllPlaceByTour(tourId: tourId)
+    private func update() {
+        placeModels = placesManager
+            .fetchAllPlaceByTour(tourId: tourId)
+            .sorted(by: { $0.orderNumber < $1.orderNumber })
     }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        placeModels.move(fromOffsets: source, toOffset: destination)
+        placesManager.saveOrder(placesList: placeModels, tourId: tourId)
+    }
+    
+    
 }
 
 #Preview {

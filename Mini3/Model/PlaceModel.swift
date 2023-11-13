@@ -10,6 +10,7 @@ import Foundation
 struct PlaceModel {
     var id = UUID()
     var name: String
+    var orderNumber: Int
 //    var picture: String? // picture name - optional
     var notes: String? // description - optional
     var tourId: UUID?

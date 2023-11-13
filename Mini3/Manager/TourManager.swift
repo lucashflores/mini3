@@ -100,8 +100,30 @@ class TourManager: ObservableObject {
         }
     }
 
-    func saveOrder(tourList: [TourModel]) {
+    func getPlacesQuantity(tourId: UUID) -> Int {
         
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+
+        do {
+            let places = try controller.container.viewContext.fetch(fetchRequest)
+            var placeModels: [PlaceModel] = []
+            for place in places {
+                if place.tour?.id == tourId{
+                    let aux = PlaceModel(
+                        id: place.id ?? UUID(),
+                        name: place.name ?? "", // TO-DO: picture
+                        orderNumber: Int(place.orderNumber),
+                        notes: place.notes,
+                        tourId: place.tour?.id
+                    )
+                    placeModels.append(aux)
+                }
+            }
+            return placeModels.count
+        } catch {
+            print("Error fetching places and converting to placeModel: \(error)")
+            return 0
+        }
     }
     // You can add more methods for specific querying and management operations as needed.
 }
