@@ -49,6 +49,16 @@ struct NotesEditorView: View {
                 .padding(.horizontal, -15)
             } else {
                 HStack {
+                    
+                    Button {
+                        placesManager.deleteplace(placeId: place.id)
+                        sheet = false
+                    } label: {
+                        Text("Delete")
+                            .font(Font.custom("Poppins-Regular", size: 15))
+                            .foregroundColor(Color(red: 0.11, green: 0.11, blue: 0.12))
+                    }
+                    
                     Spacer()
                     Button {
                         sheet = false
