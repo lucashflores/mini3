@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TourModel {
+struct TourModel: Equatable {
     var id = UUID()
     var name: String
 //    var picture: String? // picture name - optional

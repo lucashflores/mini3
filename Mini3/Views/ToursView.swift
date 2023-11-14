@@ -20,6 +20,8 @@ struct ToursView: View {
     @State private var isButtonTapped = false
     @State private var newTourId: UUID?
     
+    @State var draggedItem: TourModel = TourModel(name: "Aleatorio")
+    
     var body: some View {
        NavigationStack {
            
@@ -31,15 +33,13 @@ struct ToursView: View {
            Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
            
            ScrollView{
-               VStack{
-                   
+               LazyVStack(spacing:16){
                    ForEach(tourModels, id: \.id) { tour in
                        NavigationLink(destination: PointsView(tourId: tour.id)) {
                            TourItem(tourModel: tour)
                        }
                        
                    }
-                   .onMove(perform: move)
                }
            }
            .onAppear {

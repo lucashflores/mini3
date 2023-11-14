@@ -51,7 +51,7 @@ class PlacesManager: ObservableObject {
         controller.save()
     }
     
-    func editplace(id: UUID, name: String?) {
+    func editPlace(id: UUID, name: String?) {
         let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
 
         do {
@@ -59,6 +59,24 @@ class PlacesManager: ObservableObject {
             _ = places.map { placeEdit in
                 if placeEdit.id == id{
                     placeEdit.name = name
+                }
+                
+            }
+        } catch {
+            print("Error fetching places and converting to placeModel: \(error)")
+        }
+
+        controller.save()
+    }
+    
+    func editNote(id: UUID, notes: String) {
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+
+        do {
+            let places = try controller.container.viewContext.fetch(fetchRequest)
+            _ = places.map { placeEdit in
+                if placeEdit.id == id{
+                    placeEdit.notes = notes
                 }
                 
             }

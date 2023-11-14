@@ -126,4 +126,24 @@ class TourManager: ObservableObject {
         }
     }
     // You can add more methods for specific querying and management operations as needed.
+    
+    func getTourName(tourId: UUID) -> String {
+        let fetchRequest: NSFetchRequest<Tour> = Tour.fetchRequest()
+        
+        do {
+            let tours = try controller.container.viewContext.fetch(fetchRequest)
+            for t in tours {
+                if t.id == tourId {
+                    return t.name ?? ""
+                }
+            }
+        } catch {
+            print("Error fetching places and converting to placeModel: \(error)")
+            
+            
+            return ""
+            
+        }
+        return ""
+    }
 }
