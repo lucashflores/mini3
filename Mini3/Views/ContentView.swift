@@ -13,7 +13,8 @@ struct ContentView: View {
 
     
     var body: some View {
-        ToursView()
+//        ToursView()
+        MapView()
     }
 
     

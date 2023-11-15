@@ -13,10 +13,11 @@ struct Mini3App: App {
 
     var body: some Scene {
         WindowGroup {
-            ToursView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(TourManager(controller: persistenceController))
-                .environmentObject(PlacesManager(controller: persistenceController))
+            MapView()
+//            ToursView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environmentObject(TourManager(controller: persistenceController))
+//                .environmentObject(PlacesManager(controller: persistenceController))
 //                .environmentObject(EnvelopeListManager())
 //                .navigationBarBackButtonHidden(true)
 //                .preferredColorScheme(.light)
