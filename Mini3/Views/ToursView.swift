@@ -28,7 +28,7 @@ struct ToursView: View {
            NavigationLink(destination: PointsView(tourId: newTourId ?? UUID()), isActive: $isButtonTapped) {
                EmptyView()
            }
-           .hidden()
+//           .hidden()
            
            Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
            

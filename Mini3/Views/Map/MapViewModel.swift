@@ -16,6 +16,8 @@ class MapViewModel: ObservableObject {
     @Published var selectedSearchLocation: SearchResultModel? = nil
     @Published var searchResults = [SearchResultModel]()
     @Published var searchQuery: String = ""
+    @Published var temporaryMarker: MarkerModel?
+    @Published var markers: [MarkerModel]
     let searchPlaceHolder: String = "Search a location"
     
     private let searchService: SearchLocationService = SearchLocationServiceFactory.make()
@@ -24,6 +26,8 @@ class MapViewModel: ObservableObject {
     static public let shared = MapViewModel()
     
     private init() {
+        markers = MarkerModel.defaultMarkers
+        
         $searchQuery
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .sink { query in

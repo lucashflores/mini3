@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StopAddedToTourView: View {
+struct StopAddedToTourFeedbackView: View {
     var setDismissTimer: () -> Void
     
     var body: some View {
@@ -30,7 +30,7 @@ struct StopAddedToTourView: View {
         Color.gray
             .ignoresSafeArea()
         
-        StopAddedToTourView(setDismissTimer: {
+        StopAddedToTourFeedbackView(setDismissTimer: {
             print("timer")
         })
     }

@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct AddStopSheetView: View {
+    @EnvironmentObject var placesManager: PlacesManager
+    @ObservedObject var mapViewModel = MapViewModel.shared
+    var tourId: UUID
     @Binding var placeName: String
     @Binding var touchDisabled: Bool
-    @Binding var temporaryMarker: MarkerModel?
-    @Binding var markers: [MarkerModel]
     @Binding var selectedMarker: UUID?
     @Binding var presentFeedbackView: Bool
-    var placeTitle: String
+    
     
     var body: some View {
         VStack(alignment: .leading) {
             TextField("Place name", text: $placeName)
                 .font(.system(size: 18, weight: .bold))
                 .padding(.top, 16)
-            Text(placeTitle)
+            Text(mapViewModel.temporaryMarker?.title ?? "")
                 .font(.caption2)
                 .padding(.bottom, 32)
             Button {
                 touchDisabled = true
-                guard var markerData = temporaryMarker else { return }
+                guard var markerData = mapViewModel.temporaryMarker else { return }
                 markerData.name = placeName
-                markers.append(markerData)
+                placesManager.createPoint(place: PlaceModel(name: markerData.name, orderNumber: 1, tourId: tourId, title: markerData.title, latitude: markerData.coordinates.latitude, longitude: markerData.coordinates.longitude), placeCount: mapViewModel.markers.count)
+                mapViewModel.markers.append(markerData)
                 selectedMarker = nil
                 presentFeedbackView = true
             
@@ -40,15 +42,14 @@ struct AddStopSheetView: View {
                         .foregroundStyle(.white)
                         .font(.system(size: 16))
                 }
-                
                 .padding()
-                .background(.blue)
+                .background(.azulEscuro)
                 .clipShape(RoundedRectangle(cornerRadius: 35))
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
         .padding()
-        .background(Color("AddStopSheet"))
+        .background(Color.cinzaSheet)
         .presentationBackground(.regularMaterial)
         .presentationBackgroundInteraction(.enabled(upThrough: .large))
         .presentationDetents([.height(200)])
@@ -56,6 +57,11 @@ struct AddStopSheetView: View {
     }
 }
 
-//#Preview {
-//    AddStopSheetView()
-//}
+#Preview {
+    ZStack {
+        Color.white
+            .ignoresSafeArea()
+        
+        AddStopSheetView(tourId: UUID(), placeName: .constant("teste"), touchDisabled: .constant(true), selectedMarker: .constant(UUID()), presentFeedbackView: .constant(true))
+    }
+}

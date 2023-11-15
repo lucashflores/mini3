@@ -235,17 +235,17 @@
 		C1DF60122AF995B800F0812C /* Mini3 */ = {
 			isa = PBXGroup;
 			children = (
-				C1DC74AC2B056F0F00BA039C /* Services */,
-				A74EC6F72B025BB200EB3217 /* Info.plist */,
-				A74EC6CB2B0254D700EB3217 /* Defaults */,
-				A7BE65E32AFBCF01002931FF /* Views */,
-				A7250ABB2AFA7AC300B34A61 /* Manager */,
-				A7250AB82AFA78F000B34A61 /* Model */,
-				C1DF60132AF995B800F0812C /* Mini3App.swift */,
 				C1DF60172AF995B900F0812C /* Assets.xcassets */,
-				C1DF601C2AF995B900F0812C /* Persistence.swift */,
+				A74EC6CB2B0254D700EB3217 /* Defaults */,
+				A74EC6F72B025BB200EB3217 /* Info.plist */,
+				A7250ABB2AFA7AC300B34A61 /* Manager */,
 				C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */,
+				C1DF60132AF995B800F0812C /* Mini3App.swift */,
+				A7250AB82AFA78F000B34A61 /* Model */,
+				C1DF601C2AF995B900F0812C /* Persistence.swift */,
 				C1DF60192AF995B900F0812C /* Preview Content */,
+				C1DC74AC2B056F0F00BA039C /* Services */,
+				A7BE65E32AFBCF01002931FF /* Views */,
 			);
 			path = Mini3;
 			sourceTree = "<group>";

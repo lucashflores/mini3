@@ -2,14 +2,13 @@ import MapKit
 import SwiftUI
 
 public struct MapView: View {
-    var tourId: String
+    var tourId: UUID
     
+    @EnvironmentObject var placesManager: PlacesManager
     @ObservedObject private var viewModel: MapViewModel = MapViewModel.shared
     @State private var selectedMarker: UUID?
     @State var query = ""
-    @State var markers = MarkerModel.defaultMarkers
     @State var pinLocation: CLLocationCoordinate2D?
-    @State var temporaryMarker: MarkerModel?
     @State var isShowingAddStopSheet = false
     @State var placeName = ""
     @State var placeTitle = ""
@@ -30,22 +29,22 @@ public struct MapView: View {
         address.reverseGeocodeLocation(CLLocation.init(latitude: pinLocation.latitude, longitude: pinLocation.longitude)) { (places, error) in
             if error == nil {
                 if let allPlaces = places {
-                    temporaryMarker = MarkerModel(name: allPlaces.first?.name ?? "Marker", title: "\(allPlaces.first?.name ?? "") - \(allPlaces.first?.subLocality ?? ""), \(allPlaces.first?.postalCode ?? "")", coordinates: pinLocation)
+                    viewModel.temporaryMarker = MarkerModel(name: allPlaces.first?.name ?? "Marker", title: "\(allPlaces.first?.name ?? "") - \(allPlaces.first?.subLocality ?? ""), \(allPlaces.first?.postalCode ?? "")", coordinates: pinLocation)
                 }
             }
-            selectedMarker = temporaryMarker?.id
+            selectedMarker = viewModel.temporaryMarker?.id
         }
     }
     
     private func getMinDistance(pinLocation: CLLocationCoordinate2D) -> Double {
         var minDistance: Double = Double.infinity
-        for marker in markers {
+        for marker in viewModel.markers {
             let distance = calculateDistance(firstPoint: pinLocation, secondPoint: marker.coordinates)
             if (distance < minDistance) {
                 minDistance = distance
             }
         }
-        if let tempMarker = temporaryMarker {
+        if let tempMarker = viewModel.temporaryMarker {
             let distance = calculateDistance(firstPoint: pinLocation, secondPoint: tempMarker.coordinates)
             if (distance < minDistance) {
                 minDistance = distance
@@ -68,11 +67,11 @@ public struct MapView: View {
             MapReader { reader in
                 ZStack {
                     Map(position: $viewModel.position, interactionModes: .all, selection: $selectedMarker) {
-                        ForEach(markers, id: \.id) { marker in
+                        ForEach(viewModel.markers, id: \.id) { marker in
                             Marker(marker.name, coordinate: marker.coordinates)
                                 .tag(marker.id)
                         }
-                        if let tempMarker = temporaryMarker {
+                        if let tempMarker = viewModel.temporaryMarker {
                             Marker(tempMarker.name, coordinate: tempMarker.coordinates)
                                 .tag(tempMarker.id)
                         }
@@ -80,8 +79,8 @@ public struct MapView: View {
                     .onChange(of: viewModel.selectedSearchLocation, { oldValue, newValue in
                         print("search")
                         guard let result = newValue else { return }
-                        temporaryMarker = MarkerModel(name: result.name, title: result.title, coordinates: result.coordinate)
-                        selectedMarker = temporaryMarker?.id
+                        viewModel.temporaryMarker = MarkerModel(name: result.name, title: result.title, coordinates: result.coordinate)
+                        selectedMarker = viewModel.temporaryMarker?.id
                     })
                     .onChange(of: selectedMarker, { oldValue, newValue in
                         print("changed selected marker")
@@ -98,11 +97,11 @@ public struct MapView: View {
                             return
                         }
                         lastMarkerChange = Date.now
-                        var markerData = markers.first(where: { marker in
+                        var markerData = viewModel.markers.first(where: { marker in
                             marker.id == selectedMarker
                         })
-                        if (markerData == nil && temporaryMarker?.id == selectedMarker) {
-                            markerData = temporaryMarker
+                        if (markerData == nil && viewModel.temporaryMarker?.id == selectedMarker) {
+                            markerData = viewModel.temporaryMarker
                         }
                         guard let markerData else { return }
                         placeName = markerData.name
@@ -125,18 +124,18 @@ public struct MapView: View {
                         }
                     }
                     .sheet(isPresented: $isShowingAddStopSheet, onDismiss: dismissSheet) {
-                        AddStopSheetView(placeName: $placeName, touchDisabled: $touchDisabled, temporaryMarker: $temporaryMarker, markers: $markers, selectedMarker: $selectedMarker, presentFeedbackView: $presentFeedbackView, placeTitle: placeTitle)
+                        AddStopSheetView(tourId: tourId, placeName: $placeName, touchDisabled: $touchDisabled, selectedMarker: $selectedMarker, presentFeedbackView: $presentFeedbackView)
                     }
                     .ignoresSafeArea()
                     
                     
                     
-                    if (markers.count >= 2 && !isShowingAddStopSheet && !self.presentFeedbackView) {
+                    if (viewModel.markers.count >= 2 && !isShowingAddStopSheet && !self.presentFeedbackView) {
                         FinishAddingStopsView()
                     }
                     
                     if(self.presentFeedbackView) {
-                        StopAddedToTourView(setDismissTimer: setDismissTimer)
+                        StopAddedToTourFeedbackView(setDismissTimer: setDismissTimer)
                     }
                     
                     if (viewModel.searchQuery.count > 0) {

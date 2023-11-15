@@ -23,7 +23,7 @@ struct FinishAddingStopsView: View {
                         .font(.system(size: 16, weight: .bold))
                 }
                 .padding()
-                .background(.blue)
+                .background(.azulEscuro)
                 .clipShape(RoundedRectangle(cornerRadius: 35))
             }
             .frame(maxWidth: .infinity, alignment: .center)

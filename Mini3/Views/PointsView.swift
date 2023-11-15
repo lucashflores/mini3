@@ -124,10 +124,12 @@ struct PointsView: View {
     }
     
     func addPlace(){
-        let newPlace = PlaceModel(name: placeName, orderNumber: -1, tourId: tourId)
-        placesManager.createPoint(place: newPlace, allPlaces: placeModels)
-        update()
-        
+//        let newPlace = PlaceModel(name: placeName, orderNumber: -1, tourId: tourId, title: place.title ?? "",
+//                                  latitude: place.latitude,
+//                                  longitude: place.longitude)
+//        placesManager.createPoint(place: newPlace, allPlaces: placeModels)    
+//        update()
+//        
     }
     
     func deletePlace(id: UUID){
@@ -222,4 +224,7 @@ struct DropViewDelegate: DropDelegate {
 
 #Preview {
     ToursView()
+        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        .environmentObject(TourManager(controller: PersistenceController.shared))
+        .environmentObject(PlacesManager(controller: PersistenceController.shared))
 }
