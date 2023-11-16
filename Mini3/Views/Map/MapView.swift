@@ -3,6 +3,7 @@ import SwiftUI
 
 public struct MapView: View {
     var tourId: UUID
+    @Environment(\.dismiss) var dismiss
     
     @EnvironmentObject var placesManager: PlacesManager
     @ObservedObject private var viewModel: MapViewModel = MapViewModel.shared
@@ -132,6 +133,10 @@ public struct MapView: View {
                     
                     if (viewModel.markers.count >= 2 && !isShowingAddStopSheet && !self.presentFeedbackView) {
                         FinishAddingStopsView()
+                            .onTapGesture {
+                               print("dismiss?")
+                                dismiss()
+                            }
                     }
                     
                     if(self.presentFeedbackView) {

@@ -112,7 +112,9 @@ struct PointsView: View {
                             }
                             
                         }
-                        AddPlace()
+                        NavigationLink(destination: MapView(tourId: tourId)){
+                            AddPlace()
+                        }
                         
                     }
                     .padding(.horizontal, 12)
