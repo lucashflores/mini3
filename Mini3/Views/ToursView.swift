@@ -29,65 +29,102 @@ struct ToursView: View {
                EmptyView()
            }
            .hidden()
-           
-           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
-           
-           ScrollView{
-               LazyVStack(spacing:16){
+          
+           ScrollView(){
+               VStack(spacing: -8){
+                   Text("See")
+                       .font(Font.appBoldTitle)
+                       .frame(width: 350, alignment: .leading)
+                   Text("your tours")
+                       .font(Font.appTitle)
+                       .frame(width: 350, alignment: .leading)
+               }
+               .padding()
+               .foregroundColor(Color.black)
+               
+     
+               LazyVStack(spacing:12){
                    ForEach(tourModels, id: \.id) { tour in
                        NavigationLink(destination: PointsView(tourId: tour.id)) {
                            TourItem(tourModel: tour)
                        }
-                       
                    }
                }
+               
+               Button(action: {
+                   newTourSheet.toggle()
+               }, label: {
+                   CardTourDefault()
+               })
+               .opacity(0.7)
+    //           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+               
            }
            .onAppear {
                
                // Fetch the TourModels when the view appears
                tourModels = tourManager.fetchAllTourModels()
            }
-           .background(.yellow)
-           
            Spacer()
            
        }
        .navigationTitle("All Tours")
        .background(.red)
        .sheet(isPresented: $newTourSheet){
-           VStack{
+           VStack(){
+               Text("Give your tour a name")
+                   .font(.appBody)
                
+               TextField("My Tour", text: $tourName)
+                   .font(.largeTitle)
+                   .multilineTextAlignment(.center)
+                   .padding(20)
                
-               TextField("Enter tour name: ", text: $tourName)
+               LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
+                   CategoryNameTour()
+                   CategoryNameTour()
+                   CategoryNameTour()
+                   CategoryNameTour()
+               })
 
                
-               Button("Adicionar Tour") {
+               Button("Create a tour") {
                    newTourSheet = false
                    newTourId = addTour()
                    isButtonTapped = true
-                   
                }
+               .font(.appButton)
+               .padding()
+               .background(Color("Alaranjado"))
+               .foregroundColor(.white)
+               .cornerRadius(30)
            }
-           .presentationDetents([.fraction(0.9)])
-           .interactiveDismissDisabled()
+           .padding()
+           .presentationDetents([.fraction(0.8), .large])
+           .presentationDragIndicator(.visible)
+//           .interactiveDismissDisabled()
        }
        
     }
     
     func TourItem(tourModel: TourModel) -> some View {
-        
-        VStack(){
-            Text(tourModel.name)
-                .foregroundColor(.black)
-            Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
-                .foregroundStyle(.cyan)
-            
+        ZStack(alignment: .topLeading){
+            CardTour()
+            VStack(){
+                Text(tourModel.name)
+                    .font(.appCardsTitle)
+                    .foregroundColor(.white)
+                
+                ZStack(alignment: .center){
+                    StopPoints()
+                    Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
+                        .frame(width: 25, height: 24, alignment: .trailing)
+                        .foregroundStyle(.white)
+                }
+            }
+            .padding()
         }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 18)
-        .padding(.vertical, 22)
-        .background(.gray)
-        
+
     }
     
     func addTour() -> UUID {
@@ -119,6 +156,13 @@ struct ToursView: View {
     }
 }
 
+//#Preview {
+//    ToursView()
+//}
+
 #Preview {
     ToursView()
+        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        .environmentObject(TourManager(controller: PersistenceController.shared))
+        .environmentObject(PlacesManager(controller: PersistenceController.shared))
 }

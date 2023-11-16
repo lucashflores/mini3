@@ -28,7 +28,7 @@ struct PointsView: View {
         
         VStack(alignment: .leading){
             VStack(alignment: .leading){
-                VStack(alignment: .leading, spacing: -16){
+                VStack(alignment: .leading, spacing: -8){
                     Text("Your tour")
                         .font(Font.appTitle)
                     Text("notes")
