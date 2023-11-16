@@ -10,10 +10,20 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    let persistenceController = PersistenceController.shared
+    @State var hasSeenOnboarding = UserDefaults.standard.bool(forKey: "HasSeenOnboarding")
 
     
     var body: some View {
-        ToursView()
+        if (!hasSeenOnboarding) {
+            OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
+        }
+        else {
+            ToursView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(TourManager(controller: persistenceController))
+                .environmentObject(PlacesManager(controller: persistenceController))
+        }
     }
 
     
@@ -26,8 +36,6 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-//#Preview {
-//    
-//    ContentView()
-//        .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//}
+#Preview {
+    ContentView()
+}

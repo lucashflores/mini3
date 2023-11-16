@@ -44,6 +44,12 @@ struct ToursView: View {
                
      
                LazyVStack(spacing:12){
+//           .hidden()
+           
+           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+           
+           ScrollView{
+               LazyVStack(spacing:16){
                    ForEach(tourModels, id: \.id) { tour in
                        NavigationLink(destination: PointsView(tourId: tour.id)) {
                            TourItem(tourModel: tour)

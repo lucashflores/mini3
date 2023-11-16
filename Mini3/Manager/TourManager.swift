@@ -114,7 +114,10 @@ class TourManager: ObservableObject {
                         name: place.name ?? "", // TO-DO: picture
                         orderNumber: Int(place.orderNumber),
                         notes: place.notes,
-                        tourId: place.tour?.id
+                        tourId: place.tour?.id,
+                        title: place.title ?? "",
+                        latitude: place.latitude,
+                        longitude: place.longitude
                     )
                     placeModels.append(aux)
                 }

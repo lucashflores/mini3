@@ -18,7 +18,7 @@ class PlacesManager: ObservableObject {
     }
 
     // Create a new place.
-    func createPoint(place: PlaceModel, allPlaces: [PlaceModel]) {
+    func createPoint(place: PlaceModel, placeCount: Int) {
         
         let newPlace = Place(context: controller.container.viewContext)
         
@@ -26,7 +26,10 @@ class PlacesManager: ObservableObject {
         newPlace.name = place.name
         newPlace.notes = place.notes
         newPlace.tour = getTour(tourId: place.tourId!)
-        newPlace.orderNumber = Int16(allPlaces.count)
+        newPlace.orderNumber = Int16(placeCount)
+        newPlace.title = place.title
+        newPlace.latitude = place.latitude
+        newPlace.longitude = place.longitude
 //        newplace.picture = place.picture + TO-DO
         
         controller.save() /*+ TO-DO*/
@@ -40,7 +43,31 @@ class PlacesManager: ObservableObject {
             let places = try controller.container.viewContext.fetch(fetchRequest)
             _ = places.map { placeDelete in
                 if placeDelete.id == placeId {
+                    updateOrder(
+                        tourId: placeDelete.tour?.id ?? UUID(),
+                        orderNumber: Int(placeDelete.orderNumber)
+                    )
                     controller.container.viewContext.delete(placeDelete)
+                }
+                
+            }
+        } catch {
+            print("Error fetching places and converting to PlaceModel: \(error)")
+        }
+
+        controller.save()
+    }
+    
+    func updateOrder(tourId: UUID, orderNumber: Int) {
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+
+        do {
+            let places = try controller.container.viewContext.fetch(fetchRequest)
+            _ = places.map { placeDelete in
+                if placeDelete.tour?.id == tourId {
+                    if placeDelete.orderNumber > orderNumber {
+                        placeDelete.orderNumber = placeDelete.orderNumber - 1
+                    }
                 }
                 
             }
@@ -99,7 +126,10 @@ class PlacesManager: ObservableObject {
                     name: place.name ?? "", // TO-DO: picture
                     orderNumber: Int(place.orderNumber),
                     notes: place.notes,
-                    tourId: place.tour?.id
+                    tourId: place.tour?.id,
+                    title: place.title ?? "",
+                    latitude: place.latitude,
+                    longitude: place.longitude
                 )
             }
             return placeModels
@@ -122,7 +152,10 @@ class PlacesManager: ObservableObject {
                         name: place.name ?? "", // TO-DO: picture
                         orderNumber: Int(place.orderNumber),
                         notes: place.notes,
-                        tourId: place.tour?.id
+                        tourId: place.tour?.id,
+                        title: place.title ?? "",
+                        latitude: place.latitude,
+                        longitude: place.longitude
                     )
                     placeModels.append(aux)
                 }
@@ -153,7 +186,10 @@ class PlacesManager: ObservableObject {
                         name: place.name ?? "", // TO-DO: picture
                         orderNumber: Int(place.orderNumber),
                         notes: place.notes,
-                        tourId: place.tour?.id
+                        tourId: place.tour?.id,
+                        title: place.title ?? "",
+                        latitude: place.latitude,
+                        longitude: place.longitude
                     )
                     placeModels.append(aux)
                 }
