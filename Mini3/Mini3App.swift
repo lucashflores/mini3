@@ -13,6 +13,7 @@ struct Mini3App: App {
 
     var body: some Scene {
         WindowGroup {
+//            MapView(tourId: "")
             ToursView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(TourManager(controller: persistenceController))
