@@ -22,16 +22,19 @@ struct PointsView: View {
     @State private var isEditMode = false
     @State private var isImageVisible = false
     
+    @State private var selectedHighlight: PlaceModel = PlaceModel(name: "padrao", orderNumber: 0)
+    
+    @State private var noteSheet = false
     let backgroundColors: [Color] = [Color.itiAzul, Color.itiAzulEscuro, Color.itiAlaranjado]
     
     var body: some View {
         
         VStack(alignment: .leading){
             VStack(alignment: .leading){
-                VStack(alignment: .leading, spacing: -16){
+                VStack(alignment: .leading, spacing: -8){
                     Text("Your tour")
                         .font(Font.appTitle)
-                    Text("notes")
+                    Text("highlights")
                         .font(Font.appBoldTitle)
                 }
                 .padding(.horizontal, 16)
@@ -54,9 +57,12 @@ struct PointsView: View {
                 HStack(){
                     Spacer()
                     Button{
+                        if isEditMode {
+                            placesManager.saveOrder(placesList: placeModels, tourId: tourId)
+                            update()
+                        }
                         isEditMode.toggle()
                         withAnimation {
-                            
                             isImageVisible.toggle() // Toggle the visibility with animation
                         }
                     } label: {
@@ -68,6 +74,7 @@ struct PointsView: View {
                     }
                     .foregroundStyle(.blue)
                 }
+                .padding(.vertical, 10)
                 .padding(.horizontal, 16)
                 
                 ScrollView(.vertical){
@@ -75,7 +82,8 @@ struct PointsView: View {
                         ForEach(Array(placeModels.enumerated()), id: \.element.id) { index, place in
                             
                             if isEditMode {
-                                PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count])
+                                PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count]
+                                )
                                     .draggable(place.name){
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(.ultraThinMaterial)
@@ -95,6 +103,7 @@ struct PointsView: View {
                                                     let sourceItem = placeModels.remove(at:sourceIndex)
                                                     placeModels.insert(sourceItem, at: destinationIndex)
                                                 }
+                                                
                                             }
                                         }
                                     }
@@ -103,23 +112,37 @@ struct PointsView: View {
                             }
                             
                         }
+                        AddPlace()
+                        
                     }
                     .padding(.horizontal, 12)
                     
                     
                 }
                 .frame(maxWidth: .infinity)
+                
                 Spacer()
             }
             
             
         }
-//        .padding(10)
+        .padding(.top, 16)
        .onAppear {
            update()
        }
+       .sheet(isPresented: $noteSheet){
+           NotesEditorView(sheet: $noteSheet, place: $selectedHighlight)
+               .presentationDetents([.fraction(0.7)])
+       }
        .accentColor(.black)
+       .onChange(of: noteSheet) { newValue in
+           if !newValue {
+               // Sheet is closed, call your update function here
+               update()
+           }
+       }
 //       .navigationTitle("Add Stops")
+        
         
     }
     
@@ -153,16 +176,62 @@ struct PointsView: View {
         placesManager.saveOrder(placesList: placeModels, tourId: tourId)
     }
     
+    func AddPlace() -> some View {
+        VStack{
+            HStack(alignment: .top){
+                Text("Add a new highlight")
+                    .font(.regularTextButton)
+                    .foregroundColor(Color.textButton)
+                    .padding(.top, 20)
+                Spacer()
+                Image(systemName: "plus")
+                    .foregroundColor(Color.grayIcon)
+                    .font(
+                        Font.custom("SF Pro Display", size: 32)
+                            .weight(.medium)
+                    )
+                    .padding(.top, 14)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        .frame(height: 100)
+        .background(Color.buttonBackground)
+        .cornerRadius(23)
+        
+    }
+    
     func PlaceItem(place: PlaceModel, backgroundColor: Color) -> some View {
         HStack {
             VStack(alignment: .leading){
-                Text(place.name)
-                    .font(.system(size: 22))
-                Text("No notes yet")
-                    .font(.system(size: 15))
+                HStack(spacing: 10){
+                    Image.appHighlighter
+                        .resizable()
+                        .frame(
+                            width: 14,
+                            height: 20
+                        )
+                        .foregroundColor(.white)
+                        .padding(0)
+                    Text(place.name)
+                        .padding(0)
+                        .font(.system(size: 22))
+                }
+                
+                if (place.notes != nil) && place.notes!.isEmpty{
+                    Text("No notes yet...")
+                        .font(.system(size: 15))
+                } else {
+                    Text(place.notes ?? "No notes yet...")
+                        .font(.system(size: 15))
+                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        .lineLimit(1) // Limita o número de linhas
+                        .truncationMode(.tail) // Adiciona reticências no final
+                }
+                
                 Spacer()
             }
-            .padding(.top, 16)
+            .padding(.top, 18)
             
             Spacer()
             
@@ -170,7 +239,19 @@ struct PointsView: View {
                 Image(systemName: "line.3.horizontal")
                     .font(.system(size: 32))
                     .opacity(isImageVisible ? 1 : 0) // Initial opacity set based on isImageVisible
-                    .animation(.easeInOut)
+//                    .animation(.smooth)
+            } else {
+                VStack{
+                    Text("STOP \(place.orderNumber + 1)")
+                        .font(.highlighterCount)
+                        .foregroundColor(.white)
+                        .frame(width: 80, height: 20)
+                        .background(Color.stopBackground)
+                        .cornerRadius(12)
+                    
+                    Spacer()
+                }
+                .padding(.top, 18)
             }
             
             
@@ -181,32 +262,12 @@ struct PointsView: View {
         .frame(maxWidth: .infinity)
         .background(backgroundColor)
         .cornerRadius(23)
-//        .frame(height: 100)
-    }
-    
-    func PlaceItemDraggable(place: PlaceModel) -> some View {
-        HStack {
-            VStack(alignment: .leading){
-                Text(place.name)
-                    .font(.system(size: 22))
-                Text("No notes yet")
-                    .font(.system(size: 15))
-                Spacer()
+        .onTapGesture {
+            if isEditMode == false {
+                noteSheet.toggle()
+                selectedHighlight = place
             }
-            
-            Spacer()
-            
-            
         }
-        .padding(.top, 16)
-        .foregroundColor(Color.texto)
-        .padding(.horizontal)
-        .frame(height: 100)
-        .frame(maxWidth: .infinity)
-        
-        .background(Color.itiAzul)
-        .cornerRadius(23)
-//        .frame(height: 100)
     }
     
     private func getTourName() -> String {

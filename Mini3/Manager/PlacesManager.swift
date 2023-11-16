@@ -43,7 +43,31 @@ class PlacesManager: ObservableObject {
             let places = try controller.container.viewContext.fetch(fetchRequest)
             _ = places.map { placeDelete in
                 if placeDelete.id == placeId {
+                    updateOrder(
+                        tourId: placeDelete.tour?.id ?? UUID(),
+                        orderNumber: Int(placeDelete.orderNumber)
+                    )
                     controller.container.viewContext.delete(placeDelete)
+                }
+                
+            }
+        } catch {
+            print("Error fetching places and converting to PlaceModel: \(error)")
+        }
+
+        controller.save()
+    }
+    
+    func updateOrder(tourId: UUID, orderNumber: Int) {
+        let fetchRequest: NSFetchRequest<Place> = Place.fetchRequest()
+
+        do {
+            let places = try controller.container.viewContext.fetch(fetchRequest)
+            _ = places.map { placeDelete in
+                if placeDelete.tour?.id == tourId {
+                    if placeDelete.orderNumber > orderNumber {
+                        placeDelete.orderNumber = placeDelete.orderNumber - 1
+                    }
                 }
                 
             }
