@@ -48,6 +48,9 @@
 		C1DC74B92B05711E00BA039C /* FinishAddingStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B82B05711E00BA039C /* FinishAddingStopsView.swift */; };
 		C1DC74BB2B05718E00BA039C /* StopAddedToTourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74BA2B05718E00BA039C /* StopAddedToTourView.swift */; };
 		C1DC74BD2B05723500BA039C /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74BC2B05723500BA039C /* SearchLocationView.swift */; };
+		C1DC74BF2B05867500BA039C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74BE2B05867500BA039C /* OnboardingView.swift */; };
+		C1DC74C12B058D2300BA039C /* OnboardingFirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */; };
+		C1DC74C32B058EEF00BA039C /* OnboardingSecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */; };
 		C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60132AF995B800F0812C /* Mini3App.swift */; };
 		C1DF60162AF995B800F0812C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60152AF995B800F0812C /* ContentView.swift */; };
 		C1DF60182AF995B900F0812C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DF60172AF995B900F0812C /* Assets.xcassets */; };
@@ -100,6 +103,9 @@
 		C1DC74B82B05711E00BA039C /* FinishAddingStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishAddingStopsView.swift; sourceTree = "<group>"; };
 		C1DC74BA2B05718E00BA039C /* StopAddedToTourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopAddedToTourView.swift; sourceTree = "<group>"; };
 		C1DC74BC2B05723500BA039C /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
+		C1DC74BE2B05867500BA039C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstPage.swift; sourceTree = "<group>"; };
+		C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondPage.swift; sourceTree = "<group>"; };
 		C1DF60102AF995B800F0812C /* Mini3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DF60132AF995B800F0812C /* Mini3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3App.swift; sourceTree = "<group>"; };
 		C1DF60152AF995B800F0812C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -186,6 +192,9 @@
 				A7FAA98E2AFD01B900CB1146 /* PointsView.swift */,
 				C1DF60152AF995B800F0812C /* ContentView.swift */,
 				A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */,
+				C1DC74BE2B05867500BA039C /* OnboardingView.swift */,
+				C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */,
+				C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 			files = (
 				C1DF601D2AF995B900F0812C /* Persistence.swift in Sources */,
 				C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */,
+				C1DC74C32B058EEF00BA039C /* OnboardingSecondPage.swift in Sources */,
 				A74EC6CD2B0254E100EB3217 /* Color.swift in Sources */,
 				C1DF60162AF995B800F0812C /* ContentView.swift in Sources */,
 				A7250ABA2AFA78FD00B34A61 /* TourModel.swift in Sources */,
@@ -383,7 +393,9 @@
 				A7BE65E52AFC915D002931FF /* PlacesManager.swift in Sources */,
 				A74EC6F62B025B6D00EB3217 /* Font.swift in Sources */,
 				A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */,
+				C1DC74C12B058D2300BA039C /* OnboardingFirstPage.swift in Sources */,
 				A7BE65E72AFC91D1002931FF /* PlaceModel.swift in Sources */,
+				C1DC74BF2B05867500BA039C /* OnboardingView.swift in Sources */,
 				A7250ABF2AFA7D3200B34A61 /* ToursView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
