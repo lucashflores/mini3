@@ -14,6 +14,7 @@ struct StopPoints: View {
                 .foregroundColor(Color(uiColor: .quaternaryLabel))
                 .frame(width: 45, height: 24)
                 .cornerRadius(20)
+            
             HStack{
                 Image("PinStops")
                 Text("")
