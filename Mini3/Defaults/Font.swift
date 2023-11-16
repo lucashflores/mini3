@@ -12,6 +12,9 @@ extension Font {
     static let appTitle = Font.custom("Poppins-Light", size: 36)
     static let appBoldTitle = Font.custom("Poppins-Medium", size: 36)
     static let appSubTitle = Font.custom("Poppins-Regular", size: 24)
+    static let appCardsTitle = Font.custom("Poppins-Regular", size: 22)
+    static let appBody = Font.custom("Poppins-Regular", size: 16)
+    static let appButton = Font.custom("Poppins-Medium", size: 16)
     static let regularTextButton = Font.custom("Poppins-Regular", size: 18)
     static let highlighterCount = Font.custom("SF Pro Text", size: 13.6)
     
