@@ -34,7 +34,7 @@ struct OnboardingFirstPage: View {
                         .lineSpacing(5)
                 }
                 
-                Text("Itinote helps you remember all the key highlights in your tour.")
+                Text("We help you remember all the key\nhighlights in your tour.")
                     .lineLimit(nil)
                     .font(.onboardingSubText)
                     .frame(maxWidth: .infinity, alignment: .leading)
