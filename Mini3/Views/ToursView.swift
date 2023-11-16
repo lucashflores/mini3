@@ -76,38 +76,8 @@ struct ToursView: View {
                 }
                 .navigationTitle("All Tours")
                 .background(.red)
-                .sheet(isPresented: $newTourSheet){
-                    VStack(){
-                        Text("Give your tour a name")
-                            .font(.appBody)
-                        
-                        TextField("My Tour", text: $tourName)
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .padding(20)
-                        
-                        LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
-                            CategoryNameTour()
-                            CategoryNameTour()
-                            CategoryNameTour()
-                            CategoryNameTour()
-                        })
-                        
-                        
-                        Button("Create a tour") {
-                            newTourSheet = false
-                            newTourId = addTour()
-                            isButtonTapped = true
-                        }
-                        .font(.appButton)
-                        .padding()
-                        .background(Color("Alaranjado"))
-                        .foregroundColor(.white)
-                        .cornerRadius(30)
-                    }
-                    .padding()
-                    .presentationDetents([.fraction(0.8), .large])
-                    .presentationDragIndicator(.visible)
+                .sheet(isPresented: $newTourSheet) {
+                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, addTour: addTour)
                     //           .interactiveDismissDisabled()
                 }
                 
@@ -116,7 +86,7 @@ struct ToursView: View {
     }
     
     func TourItem(tourModel: TourModel) -> some View {
-        ZStack(alignment: .topLeading){
+        ZStack(alignment: .topLeading) {
             CardTour()
             VStack(){
                 Text(tourModel.name)

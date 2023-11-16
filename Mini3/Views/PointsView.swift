@@ -103,7 +103,6 @@ struct PointsView: View {
                                                     let sourceItem = placeModels.remove(at:sourceIndex)
                                                     placeModels.insert(sourceItem, at: destinationIndex)
                                                 }
-                                                
                                             }
                                         }
                                     }
