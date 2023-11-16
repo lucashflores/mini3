@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CategoryNameTour: View {
+    var category: String
+    var icon: String
     @State var selected = false
     
     var body: some View {
@@ -16,14 +18,14 @@ struct CategoryNameTour: View {
             selected.toggle()
         } label: {
                 HStack(){
-                    Image(systemName: "mic.circle.fill")
-                        .font(.callout)
+                    Image(systemName: icon)
+                        .font(.system(size: 16))
                         .foregroundColor(selected ? .white : .itiAzulEscuro)
-                    Text("Culture")
-                        .font(.callout)
+                    Text(category)
+                        .font(.categoryName)
                         .foregroundColor(selected ? .white : .itiAzulEscuro)
                     }
-                .padding(.vertical,3)
+                .padding(.vertical, 3)
                 .padding(.horizontal, 9)
                 .background(selected ? .itiAzulEscuro : Color(uiColor: .systemFill))
                 .cornerRadius(20)
@@ -34,5 +36,5 @@ struct CategoryNameTour: View {
 
 
 #Preview {
-    CategoryNameTour()
+    CategoryNameTour(category: "Culture", icon: "mic.circle.fill")
 }

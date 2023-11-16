@@ -41,6 +41,8 @@
 		A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA98E2AFD01B900CB1146 /* PointsView.swift */; };
 		A7FDFC9B2B039EB500BB0738 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9A2B039EB500BB0738 /* Image.swift */; };
 		A7FDFC9D2B03B4B600BB0738 /* NotesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */; };
+		C1D7821B2B0649E100B551AE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D7821A2B0649E100B551AE /* CategoryModel.swift */; };
+		C1D7821D2B0651BE00B551AE /* AddTourSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */; };
 		C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A32B056D7200BA039C /* SearchResultModel.swift */; };
 		C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A52B056E5E00BA039C /* MarkerModel.swift */; };
 		C1DC74A92B056ED600BA039C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A82B056ED600BA039C /* MapView.swift */; };
@@ -101,6 +103,8 @@
 		A7FAA98E2AFD01B900CB1146 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A7FDFC9A2B039EB500BB0738 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEditorView.swift; sourceTree = "<group>"; };
+		C1D7821A2B0649E100B551AE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTourSheetView.swift; sourceTree = "<group>"; };
 		C1DC74A32B056D7200BA039C /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		C1DC74A52B056E5E00BA039C /* MarkerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerModel.swift; sourceTree = "<group>"; };
 		C1DC74A82B056ED600BA039C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				A7BE65E62AFC91D1002931FF /* PlaceModel.swift */,
 				C1DC74A32B056D7200BA039C /* SearchResultModel.swift */,
 				C1DC74A52B056E5E00BA039C /* MarkerModel.swift */,
+				C1D7821A2B0649E100B551AE /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				C1DC74BE2B05867500BA039C /* OnboardingView.swift */,
 				C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */,
 				C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */,
+				C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */,
 				C1DC74C32B058EEF00BA039C /* OnboardingSecondPage.swift in Sources */,
 				A74EC6CD2B0254E100EB3217 /* Color.swift in Sources */,
+				C1D7821B2B0649E100B551AE /* CategoryModel.swift in Sources */,
 				C1DF60162AF995B800F0812C /* ContentView.swift in Sources */,
 				A7250ABA2AFA78FD00B34A61 /* TourModel.swift in Sources */,
 				C1DC74B72B05700700BA039C /* AddStopSheetView.swift in Sources */,
@@ -414,6 +421,7 @@
 				C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */,
 				A7250ABD2AFA7AD000B34A61 /* TourManager.swift in Sources */,
 				C1DC74B52B056F7300BA039C /* SearchLocationServiceFactory.swift in Sources */,
+				C1D7821D2B0651BE00B551AE /* AddTourSheetView.swift in Sources */,
 				C1DC74B32B056F5F00BA039C /* SearchLocationService.swift in Sources */,
 				C1DC74BD2B05723500BA039C /* SearchLocationView.swift in Sources */,
 				C1DC74AB2B056EEB00BA039C /* MapViewModel.swift in Sources */,
