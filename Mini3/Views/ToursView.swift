@@ -12,7 +12,7 @@ struct ToursView: View {
     @EnvironmentObject var tourManager: TourManager
     
     @State private var tourModels: [TourModel] = []
-    @State private var tourName: String = ""
+    @State private var tourName: String = "My Tour"
     
     @State private var newTourSheet: Bool = false
     
@@ -46,14 +46,25 @@ struct ToursView: View {
                 LazyVStack(spacing:12){
                     //           .hidden()
                     
-                    Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+//                    Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
                     
                     ScrollView{
                         LazyVStack(spacing:16){
+//                            NavigationLink(destination: EmptyView()) {
+//                                TourItem(tourModel: TourModel(
+//                                    name: "Tour"
+//                                    
+//                                ))
+//                            }
+                            
                             ForEach(tourModels, id: \.id) { tour in
                                 NavigationLink(destination: PointsView(tourId: tour.id)) {
                                     TourItem(tourModel: tour)
                                 }
+//                                .onLongPressGesture {
+//                                    tourManager.deleteTour(tourId: tour.id)
+//                                    update()
+//                                }
                             }
                         }
                         
@@ -88,10 +99,12 @@ struct ToursView: View {
     func TourItem(tourModel: TourModel) -> some View {
         ZStack(alignment: .topLeading) {
             CardTour()
-            VStack(){
+            VStack(alignment: .leading)
+            {
                 Text(tourModel.name)
                     .font(.appCardsTitle)
                     .foregroundColor(.white)
+
                 
                 ZStack(alignment: .center){
                     StopPoints()
@@ -99,6 +112,8 @@ struct ToursView: View {
                         .frame(width: 25, height: 24, alignment: .trailing)
                         .foregroundStyle(.white)
                 }
+                
+                
             }
             .padding()
         }
@@ -133,10 +148,6 @@ struct ToursView: View {
         tourModels.move(fromOffsets: source, toOffset: destination)
     }
 }
-
-//#Preview {
-//    ToursView()
-//}
 
 #Preview {
     ToursView()

@@ -15,11 +15,13 @@ struct PointsView: View {
     
     let tourId: UUID
     
+    @State private var tourName: String = ""
     @State private var placeModels: [PlaceModel] = []
     @State private var placeName: String = ""
     
     @State private var draggingItem: String? = ""
     @State private var isEditMode = false
+    @State private var editNameSheet = false
     @State private var isImageVisible = false
     
     @State private var selectedHighlight: PlaceModel = PlaceModel(name: "padrao", orderNumber: 0, title: "", latitude: 1, longitude: 1)
@@ -40,10 +42,18 @@ struct PointsView: View {
                 .padding(.horizontal, 16)
                 .foregroundColor(Color.black)
                 
-                Text(getTourName())
-                    .padding(.horizontal, 16)
-                    .font(Font.appSubTitle)
-                    .foregroundColor(Color.subTitleColor)
+                HStack(spacing: 10){
+                    Text(tourName)
+                        .font(Font.appSubTitle)
+                        
+                    Image(systemName: "pencil.line")
+                        .onTapGesture {
+                            editNameSheet = true
+                        }
+                        .font(.system(size: 26))
+                }
+                .foregroundColor(Color.subTitleColor)
+                .padding(.horizontal, 16)
             }
             
 //            TextField("Enter tour name: ", text: $placeName)
@@ -111,7 +121,9 @@ struct PointsView: View {
                             }
                             
                         }
-                        AddPlace()
+                        NavigationLink(destination: MapView(tourId: tourId)){
+                            AddPlace()
+                        }
                         
                     }
                     .padding(.horizontal, 12)
@@ -133,12 +145,53 @@ struct PointsView: View {
            NotesEditorView(sheet: $noteSheet, place: $selectedHighlight)
                .presentationDetents([.fraction(0.7)])
        }
+       .sheet(isPresented: $editNameSheet){
+           
+               VStack(){
+                   Text("Give your tour a name")
+                       .font(.appBody)
+                   
+                   TextField("My Tour", text: $tourName)
+                       .font(.largeTitle)
+                       .multilineTextAlignment(.center)
+                       .padding(20)
+                   
+                   LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
+                       CategoryNameTour()
+                       CategoryNameTour()
+                       CategoryNameTour()
+                       CategoryNameTour()
+                   })
+                   
+                   
+                   Button("Save tour name") {
+                       editNameSheet = false
+                       tourManager.editTour(id: tourId, name: tourName)
+//                       newTourId = addTour()
+//                       isButtonTapped = true
+                   }
+                   .font(.appButton)
+                   .padding()
+                   
+                   .background(Color("Alaranjado"))
+                   .foregroundColor(.white)
+                   .cornerRadius(30)
+                   .padding(.top, 36)
+               }
+               .padding()
+               .presentationDetents([.fraction(0.8), .large])
+               .presentationDragIndicator(.visible)
+               //           .interactiveDismissDisabled()
+       }
        .accentColor(.black)
        .onChange(of: noteSheet) { newValue in
            if !newValue {
                // Sheet is closed, call your update function here
                update()
            }
+       }
+       .onAppear(){
+           tourName = getTourName()
        }
 //       .navigationTitle("Add Stops")
         
