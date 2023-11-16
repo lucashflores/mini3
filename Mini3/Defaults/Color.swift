@@ -12,6 +12,7 @@ extension Color {
     static let itiAzul = Color("Azul")
     static let itiAlaranjado = Color("Alaranjado")
     static let itiAzulEscuro = Color("AzulEscuro")
+    static let cinzaSheet = Color("Cinza")
     
     static let texto = Color(red: 0.95, green: 0.95, blue: 0.97)
     static let appAccentColor = Color(red: 0.11, green: 0.11, blue: 0.12)

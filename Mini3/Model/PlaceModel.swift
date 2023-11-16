@@ -14,6 +14,9 @@ struct PlaceModel {
 //    var picture: String? // picture name - optional
     var notes: String? // description - optional
     var tourId: UUID?
+    var title: String
+    var latitude: Double
+    var longitude: Double
     // provavelmente botar coordenadas
 }
 

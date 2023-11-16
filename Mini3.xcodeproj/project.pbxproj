@@ -36,6 +36,18 @@
 		A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA98E2AFD01B900CB1146 /* PointsView.swift */; };
 		A7FDFC9B2B039EB500BB0738 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9A2B039EB500BB0738 /* Image.swift */; };
 		A7FDFC9D2B03B4B600BB0738 /* NotesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */; };
+		C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A32B056D7200BA039C /* SearchResultModel.swift */; };
+		C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A52B056E5E00BA039C /* MarkerModel.swift */; };
+		C1DC74A92B056ED600BA039C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A82B056ED600BA039C /* MapView.swift */; };
+		C1DC74AB2B056EEB00BA039C /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74AA2B056EEB00BA039C /* MapViewModel.swift */; };
+		C1DC74AF2B056F2F00BA039C /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74AE2B056F2F00BA039C /* DataAccess.swift */; };
+		C1DC74B12B056F4300BA039C /* MapKitDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B02B056F4300BA039C /* MapKitDataAccess.swift */; };
+		C1DC74B32B056F5F00BA039C /* SearchLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B22B056F5F00BA039C /* SearchLocationService.swift */; };
+		C1DC74B52B056F7300BA039C /* SearchLocationServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B42B056F7300BA039C /* SearchLocationServiceFactory.swift */; };
+		C1DC74B72B05700700BA039C /* AddStopSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B62B05700700BA039C /* AddStopSheetView.swift */; };
+		C1DC74B92B05711E00BA039C /* FinishAddingStopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74B82B05711E00BA039C /* FinishAddingStopsView.swift */; };
+		C1DC74BB2B05718E00BA039C /* StopAddedToTourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74BA2B05718E00BA039C /* StopAddedToTourView.swift */; };
+		C1DC74BD2B05723500BA039C /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74BC2B05723500BA039C /* SearchLocationView.swift */; };
 		C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60132AF995B800F0812C /* Mini3App.swift */; };
 		C1DF60162AF995B800F0812C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF60152AF995B800F0812C /* ContentView.swift */; };
 		C1DF60182AF995B900F0812C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DF60172AF995B900F0812C /* Assets.xcassets */; };
@@ -76,6 +88,18 @@
 		A7FAA98E2AFD01B900CB1146 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A7FDFC9A2B039EB500BB0738 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEditorView.swift; sourceTree = "<group>"; };
+		C1DC74A32B056D7200BA039C /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		C1DC74A52B056E5E00BA039C /* MarkerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerModel.swift; sourceTree = "<group>"; };
+		C1DC74A82B056ED600BA039C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		C1DC74AA2B056EEB00BA039C /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		C1DC74AE2B056F2F00BA039C /* DataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
+		C1DC74B02B056F4300BA039C /* MapKitDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDataAccess.swift; sourceTree = "<group>"; };
+		C1DC74B22B056F5F00BA039C /* SearchLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationService.swift; sourceTree = "<group>"; };
+		C1DC74B42B056F7300BA039C /* SearchLocationServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationServiceFactory.swift; sourceTree = "<group>"; };
+		C1DC74B62B05700700BA039C /* AddStopSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStopSheetView.swift; sourceTree = "<group>"; };
+		C1DC74B82B05711E00BA039C /* FinishAddingStopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishAddingStopsView.swift; sourceTree = "<group>"; };
+		C1DC74BA2B05718E00BA039C /* StopAddedToTourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopAddedToTourView.swift; sourceTree = "<group>"; };
+		C1DC74BC2B05723500BA039C /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		C1DF60102AF995B800F0812C /* Mini3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DF60132AF995B800F0812C /* Mini3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini3App.swift; sourceTree = "<group>"; };
 		C1DF60152AF995B800F0812C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +126,8 @@
 			children = (
 				A7250AB92AFA78FD00B34A61 /* TourModel.swift */,
 				A7BE65E62AFC91D1002931FF /* PlaceModel.swift */,
+				C1DC74A32B056D7200BA039C /* SearchResultModel.swift */,
+				C1DC74A52B056E5E00BA039C /* MarkerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,12 +181,45 @@
 		A7BE65E32AFBCF01002931FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1DC74A72B056ECA00BA039C /* Map */,
 				A7250ABE2AFA7D3200B34A61 /* ToursView.swift */,
 				A7FAA98E2AFD01B900CB1146 /* PointsView.swift */,
 				C1DF60152AF995B800F0812C /* ContentView.swift */,
 				A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C1DC74A72B056ECA00BA039C /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C1DC74B62B05700700BA039C /* AddStopSheetView.swift */,
+				C1DC74A82B056ED600BA039C /* MapView.swift */,
+				C1DC74AA2B056EEB00BA039C /* MapViewModel.swift */,
+				C1DC74B82B05711E00BA039C /* FinishAddingStopsView.swift */,
+				C1DC74BA2B05718E00BA039C /* StopAddedToTourView.swift */,
+				C1DC74BC2B05723500BA039C /* SearchLocationView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		C1DC74AC2B056F0F00BA039C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C1DC74AD2B056F1A00BA039C /* SearchLocationService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C1DC74AD2B056F1A00BA039C /* SearchLocationService */ = {
+			isa = PBXGroup;
+			children = (
+				C1DC74AE2B056F2F00BA039C /* DataAccess.swift */,
+				C1DC74B02B056F4300BA039C /* MapKitDataAccess.swift */,
+				C1DC74B22B056F5F00BA039C /* SearchLocationService.swift */,
+				C1DC74B42B056F7300BA039C /* SearchLocationServiceFactory.swift */,
+			);
+			path = SearchLocationService;
 			sourceTree = "<group>";
 		};
 		C1DF60072AF995B800F0812C = {
@@ -182,16 +241,17 @@
 		C1DF60122AF995B800F0812C /* Mini3 */ = {
 			isa = PBXGroup;
 			children = (
-				A74EC6F72B025BB200EB3217 /* Info.plist */,
-				A74EC6CB2B0254D700EB3217 /* Defaults */,
-				A7BE65E32AFBCF01002931FF /* Views */,
-				A7250ABB2AFA7AC300B34A61 /* Manager */,
-				A7250AB82AFA78F000B34A61 /* Model */,
-				C1DF60132AF995B800F0812C /* Mini3App.swift */,
 				C1DF60172AF995B900F0812C /* Assets.xcassets */,
-				C1DF601C2AF995B900F0812C /* Persistence.swift */,
+				A74EC6CB2B0254D700EB3217 /* Defaults */,
+				A74EC6F72B025BB200EB3217 /* Info.plist */,
+				A7250ABB2AFA7AC300B34A61 /* Manager */,
 				C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */,
+				C1DF60132AF995B800F0812C /* Mini3App.swift */,
+				A7250AB82AFA78F000B34A61 /* Model */,
+				C1DF601C2AF995B900F0812C /* Persistence.swift */,
 				C1DF60192AF995B900F0812C /* Preview Content */,
+				C1DC74AC2B056F0F00BA039C /* Services */,
+				A7BE65E32AFBCF01002931FF /* Views */,
 			);
 			path = Mini3;
 			sourceTree = "<group>";
@@ -300,14 +360,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1DF601D2AF995B900F0812C /* Persistence.swift in Sources */,
+				C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */,
 				A74EC6CD2B0254E100EB3217 /* Color.swift in Sources */,
 				C1DF60162AF995B800F0812C /* ContentView.swift in Sources */,
 				A7250ABA2AFA78FD00B34A61 /* TourModel.swift in Sources */,
+				C1DC74B72B05700700BA039C /* AddStopSheetView.swift in Sources */,
+				C1DC74B12B056F4300BA039C /* MapKitDataAccess.swift in Sources */,
+				C1DC74BB2B05718E00BA039C /* StopAddedToTourView.swift in Sources */,
+				C1DC74AF2B056F2F00BA039C /* DataAccess.swift in Sources */,
+				C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */,
 				A7250ABD2AFA7AD000B34A61 /* TourManager.swift in Sources */,
+				C1DC74B52B056F7300BA039C /* SearchLocationServiceFactory.swift in Sources */,
+				C1DC74B32B056F5F00BA039C /* SearchLocationService.swift in Sources */,
+				C1DC74BD2B05723500BA039C /* SearchLocationView.swift in Sources */,
+				C1DC74AB2B056EEB00BA039C /* MapViewModel.swift in Sources */,
+				C1DC74A92B056ED600BA039C /* MapView.swift in Sources */,
 				C1DF60202AF995B900F0812C /* Mini3.xcdatamodeld in Sources */,
 				A7FDFC9B2B039EB500BB0738 /* Image.swift in Sources */,
 				A7FDFC9D2B03B4B600BB0738 /* NotesEditorView.swift in Sources */,
 				C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */,
+				C1DC74B92B05711E00BA039C /* FinishAddingStopsView.swift in Sources */,
 				A7BE65E52AFC915D002931FF /* PlacesManager.swift in Sources */,
 				A74EC6F62B025B6D00EB3217 /* Font.swift in Sources */,
 				A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */,
