@@ -23,94 +23,96 @@ struct ToursView: View {
     @State var draggedItem: TourModel = TourModel(name: "Aleatorio")
     
     var body: some View {
-       NavigationStack {
-           
-           NavigationLink(destination: PointsView(tourId: newTourId ?? UUID()), isActive: $isButtonTapped) {
-               EmptyView()
-           }
-           .hidden()
-          
-           ScrollView(){
-               VStack(spacing: -8){
-                   Text("See")
-                       .font(Font.appBoldTitle)
-                       .frame(width: 350, alignment: .leading)
-                   Text("your tours")
-                       .font(Font.appTitle)
-                       .frame(width: 350, alignment: .leading)
-               }
-               .padding()
-               .foregroundColor(Color.black)
-               
-     
-               LazyVStack(spacing:12){
-//           .hidden()
-           
-           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
-           
-           ScrollView{
-               LazyVStack(spacing:16){
-                   ForEach(tourModels, id: \.id) { tour in
-                       NavigationLink(destination: PointsView(tourId: tour.id)) {
-                           TourItem(tourModel: tour)
-                       }
-                   }
-               }
-               
-               Button(action: {
-                   newTourSheet.toggle()
-               }, label: {
-                   CardTourDefault()
-               })
-               .opacity(0.7)
-    //           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
-               
-           }
-           .onAppear {
-               
-               // Fetch the TourModels when the view appears
-               tourModels = tourManager.fetchAllTourModels()
-           }
-           Spacer()
-           
-       }
-       .navigationTitle("All Tours")
-       .background(.red)
-       .sheet(isPresented: $newTourSheet){
-           VStack(){
-               Text("Give your tour a name")
-                   .font(.appBody)
-               
-               TextField("My Tour", text: $tourName)
-                   .font(.largeTitle)
-                   .multilineTextAlignment(.center)
-                   .padding(20)
-               
-               LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
-                   CategoryNameTour()
-                   CategoryNameTour()
-                   CategoryNameTour()
-                   CategoryNameTour()
-               })
-
-               
-               Button("Create a tour") {
-                   newTourSheet = false
-                   newTourId = addTour()
-                   isButtonTapped = true
-               }
-               .font(.appButton)
-               .padding()
-               .background(Color("Alaranjado"))
-               .foregroundColor(.white)
-               .cornerRadius(30)
-           }
-           .padding()
-           .presentationDetents([.fraction(0.8), .large])
-           .presentationDragIndicator(.visible)
-//           .interactiveDismissDisabled()
-       }
-       
+        NavigationStack {
+            
+            NavigationLink(destination: PointsView(tourId: newTourId ?? UUID()), isActive: $isButtonTapped) {
+                EmptyView()
+            }
+            .hidden()
+            
+            ScrollView(){
+                VStack(spacing: -8){
+                    Text("See")
+                        .font(Font.appBoldTitle)
+                        .frame(width: 350, alignment: .leading)
+                    Text("your tours")
+                        .font(Font.appTitle)
+                        .frame(width: 350, alignment: .leading)
+                }
+                .padding()
+                .foregroundColor(Color.black)
+                
+                
+                LazyVStack(spacing:12){
+                    //           .hidden()
+                    
+                    Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+                    
+                    ScrollView{
+                        LazyVStack(spacing:16){
+                            ForEach(tourModels, id: \.id) { tour in
+                                NavigationLink(destination: PointsView(tourId: tour.id)) {
+                                    TourItem(tourModel: tour)
+                                }
+                            }
+                        }
+                        
+                        Button(action: {
+                            newTourSheet.toggle()
+                        }, label: {
+                            CardTourDefault()
+                        })
+                        .opacity(0.7)
+                        //           Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+                        
+                    }
+                    .onAppear {
+                        
+                        // Fetch the TourModels when the view appears
+                        tourModels = tourManager.fetchAllTourModels()
+                    }
+                    Spacer()
+                    
+                }
+                .navigationTitle("All Tours")
+                .background(.red)
+                .sheet(isPresented: $newTourSheet){
+                    VStack(){
+                        Text("Give your tour a name")
+                            .font(.appBody)
+                        
+                        TextField("My Tour", text: $tourName)
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.center)
+                            .padding(20)
+                        
+                        LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
+                            CategoryNameTour()
+                            CategoryNameTour()
+                            CategoryNameTour()
+                            CategoryNameTour()
+                        })
+                        
+                        
+                        Button("Create a tour") {
+                            newTourSheet = false
+                            newTourId = addTour()
+                            isButtonTapped = true
+                        }
+                        .font(.appButton)
+                        .padding()
+                        .background(Color("Alaranjado"))
+                        .foregroundColor(.white)
+                        .cornerRadius(30)
+                    }
+                    .padding()
+                    .presentationDetents([.fraction(0.8), .large])
+                    .presentationDragIndicator(.visible)
+                    //           .interactiveDismissDisabled()
+                }
+                
+            }
+        }
     }
     
     func TourItem(tourModel: TourModel) -> some View {
