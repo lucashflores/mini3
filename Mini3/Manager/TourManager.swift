@@ -94,7 +94,7 @@ class TourManager: ObservableObject {
                     id: tour.id ?? UUID(),
                     name: tour.name ?? "", // TO-DO: picture
                     description: tour.desc,
-                    category: tour.category ?? "No Category"
+                    category: tour.category ?? "No category"
                 )
             }
             return tourModels

@@ -13,7 +13,7 @@ struct ToursView: View {
     
     @State private var tourModels: [TourModel] = []
     @State private var tourName: String = "My Tour"
-    @State private var selectedCategory: String = "No Category"
+    @State private var selectedCategory: String = "No category"
     
     @State private var newTourSheet: Bool = false
     

@@ -26,7 +26,7 @@ struct AddHighlightView: View {
                     .foregroundColor(.subTitleColor)
             }
             
-            Categories()
+            Categories(category: CategoryModel.categories[0].name)
                 .padding(.vertical, -10)
             
             Text("Add your tour highlights and start taking notes to get the best out of Itinote!")
