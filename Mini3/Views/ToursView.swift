@@ -129,7 +129,7 @@ struct ToursView: View {
     
     func addTour() -> UUID {
 //        newTourSheet = false
-        let newTour = TourModel(name: tourName.isEmpty? "MyTour" :  tourName, category: selectedCategory)
+        let newTour = TourModel(name: tourName.isEmpty ? "MyTour" :  tourName, category: selectedCategory)
         tourManager.createTour(tour: newTour)
         update()
         return newTour.id

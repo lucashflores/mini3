@@ -17,12 +17,14 @@ struct ContentView: View {
     var body: some View {
         if (!hasSeenOnboarding) {
             OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
+                .preferredColorScheme(.light)
         }
         else {
             ToursView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(TourManager(controller: persistenceController))
                 .environmentObject(PlacesManager(controller: persistenceController))
+                .preferredColorScheme(.light)
         }
     }
 

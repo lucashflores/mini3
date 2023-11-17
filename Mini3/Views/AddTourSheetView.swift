@@ -74,7 +74,7 @@ struct AddTourSheetView: View {
 }
 
 #Preview {
-    AddTourSheetView(tourName: .constant(""), newTourSheet: .constant(true), newTourId: .constant(UUID()), isButtonTapped: .constant(false)) {
+    AddTourSheetView(tourName: .constant(""), newTourSheet: .constant(true), newTourId: .constant(UUID()), isButtonTapped: .constant(false), categorySelected: .constant("No category")) {
         return UUID()
     }
 }
