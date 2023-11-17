@@ -12,7 +12,7 @@ struct ToursView: View {
     @EnvironmentObject var tourManager: TourManager
     
     @State private var tourModels: [TourModel] = []
-    @State private var tourName: String = ""
+    @State private var tourName: String = "My Tour"
     
     @State private var newTourSheet: Bool = false
     
@@ -30,30 +30,43 @@ struct ToursView: View {
             }
             .hidden()
             
+            VStack(spacing: -8){
+                Text("See")
+                    .font(Font.appBoldTitle)
+                    .frame(width: 350, alignment: .leading)
+                Text("your tours")
+                    .font(Font.appTitle)
+                    .frame(width: 350, alignment: .leading)
+            }
+            .padding()
+            .foregroundColor(Color.black)
+            
             ScrollView(){
-                VStack(spacing: -8){
-                    Text("See")
-                        .font(Font.appBoldTitle)
-                        .frame(width: 350, alignment: .leading)
-                    Text("your tours")
-                        .font(Font.appTitle)
-                        .frame(width: 350, alignment: .leading)
-                }
-                .padding()
-                .foregroundColor(Color.black)
+                
                 
                 
                 LazyVStack(spacing:12){
                     //           .hidden()
                     
-                    Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
+//                    Button("Adicionar Tour", systemImage: "arrow.up", action: { newTourSheet.toggle() })
                     
                     ScrollView{
                         LazyVStack(spacing:16){
+//                            NavigationLink(destination: EmptyView()) {
+//                                TourItem(tourModel: TourModel(
+//                                    name: "Tour"
+//                                    
+//                                ))
+//                            }
+                            
                             ForEach(tourModels, id: \.id) { tour in
                                 NavigationLink(destination: PointsView(tourId: tour.id)) {
                                     TourItem(tourModel: tour)
                                 }
+//                                .onLongPressGesture {
+//                                    tourManager.deleteTour(tourId: tour.id)
+//                                    update()
+//                                }
                             }
                         }
                         
@@ -74,40 +87,10 @@ struct ToursView: View {
                     Spacer()
                     
                 }
-                .navigationTitle("All Tours")
-                .background(.red)
-                .sheet(isPresented: $newTourSheet){
-                    VStack(){
-                        Text("Give your tour a name")
-                            .font(.appBody)
-                        
-                        TextField("My Tour", text: $tourName)
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .padding(20)
-                        
-                        LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
-                            CategoryNameTour()
-                            CategoryNameTour()
-                            CategoryNameTour()
-                            CategoryNameTour()
-                        })
-                        
-                        
-                        Button("Create a tour") {
-                            newTourSheet = false
-                            newTourId = addTour()
-                            isButtonTapped = true
-                        }
-                        .font(.appButton)
-                        .padding()
-                        .background(Color("Alaranjado"))
-                        .foregroundColor(.white)
-                        .cornerRadius(30)
-                    }
-                    .padding()
-                    .presentationDetents([.fraction(0.8), .large])
-                    .presentationDragIndicator(.visible)
+//                .navigationTitle("All Tours")
+//                .background(.red)
+                .sheet(isPresented: $newTourSheet) {
+                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, addTour: addTour)
                     //           .interactiveDismissDisabled()
                 }
                 
@@ -116,12 +99,14 @@ struct ToursView: View {
     }
     
     func TourItem(tourModel: TourModel) -> some View {
-        ZStack(alignment: .topLeading){
+        ZStack(alignment: .topLeading) {
             CardTour()
-            VStack(){
+            VStack(alignment: .leading)
+            {
                 Text(tourModel.name)
                     .font(.appCardsTitle)
                     .foregroundColor(.white)
+
                 
                 ZStack(alignment: .center){
                     StopPoints()
@@ -129,6 +114,8 @@ struct ToursView: View {
                         .frame(width: 25, height: 24, alignment: .trailing)
                         .foregroundStyle(.white)
                 }
+                
+                
             }
             .padding()
         }
@@ -163,10 +150,6 @@ struct ToursView: View {
         tourModels.move(fromOffsets: source, toOffset: destination)
     }
 }
-
-//#Preview {
-//    ToursView()
-//}
 
 #Preview {
     ToursView()

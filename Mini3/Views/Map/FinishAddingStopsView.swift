@@ -11,9 +11,7 @@ struct FinishAddingStopsView: View {
     var body: some View {
         VStack {
             Spacer()
-            Button {
-                print("finish")
-            } label: {
+            
                 HStack {
                     Image(systemName: "checkmark")
                         .foregroundStyle(.white)
@@ -25,7 +23,7 @@ struct FinishAddingStopsView: View {
                 .padding()
                 .background(.azulEscuro)
                 .clipShape(RoundedRectangle(cornerRadius: 35))
-            }
+            
             .frame(maxWidth: .infinity, alignment: .center)
         }
     }

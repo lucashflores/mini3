@@ -22,6 +22,7 @@ extension Font {
     static let notesSubTitle = Font.custom("Poppins", size: 12)
     static let onboardingMainText = Font.custom("Poppins-Medium", size: 34)
     static let onboardingSubText = Font.custom("Poppins-Regular", size: 16)
+    static let categoryName = Font.custom("Poppins", size: 13)
 //    static let appTitle = Font.custom("DMSerifDisplay-Regular", size: 24)
 //    static let appQuoteSubtitle = Font.custom("Baskervville-Regular", size: 12)
 //    

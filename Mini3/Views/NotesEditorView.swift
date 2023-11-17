@@ -78,7 +78,7 @@ struct NotesEditorView: View {
                 .font(.notesTitle)
                 .foregroundColor(.textNotesTitle)
                 .padding(.top, 2)
-            Text("São Francisco, Curitiba - PR")
+            Text(place.title)
                 .font(.notesSubTitle)
                 .foregroundColor(.notesSubTitle)
             

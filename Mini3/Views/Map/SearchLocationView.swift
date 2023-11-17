@@ -15,10 +15,16 @@ struct SearchLocationView: View {
             List {
                 ForEach(viewModel.searchResults) { result in
                     Button(action: { viewModel.didSelectResult(result) }) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(result.name)
-                                    .font(.headline)
-                            Text(result.title)
+                        HStack {
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundStyle(.white, .black)
+                                .font(.system(size: 48))
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(result.name)
+                                        .font(.headline)
+                                Text(result.title)
+                            }
                         }
                     }
                     .listRowBackground(Color.clear)

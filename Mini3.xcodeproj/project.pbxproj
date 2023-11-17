@@ -43,6 +43,9 @@
 		A7FAA98F2AFD01B900CB1146 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA98E2AFD01B900CB1146 /* PointsView.swift */; };
 		A7FDFC9B2B039EB500BB0738 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9A2B039EB500BB0738 /* Image.swift */; };
 		A7FDFC9D2B03B4B600BB0738 /* NotesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */; };
+		C1D7821B2B0649E100B551AE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D7821A2B0649E100B551AE /* CategoryModel.swift */; };
+		C1D7821D2B0651BE00B551AE /* AddTourSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */; };
+		C1D7821F2B07875A00B551AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1D7821E2B07875A00B551AE /* Launch Screen.storyboard */; };
 		C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A32B056D7200BA039C /* SearchResultModel.swift */; };
 		C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A52B056E5E00BA039C /* MarkerModel.swift */; };
 		C1DC74A92B056ED600BA039C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC74A82B056ED600BA039C /* MapView.swift */; };
@@ -64,7 +67,6 @@
 		C1DF601B2AF995B900F0812C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DF601A2AF995B900F0812C /* Preview Assets.xcassets */; };
 		C1DF601D2AF995B900F0812C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DF601C2AF995B900F0812C /* Persistence.swift */; };
 		C1DF60202AF995B900F0812C /* Mini3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */; };
-		C1DF60282AF998D700F0812C /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = C1DF60272AF998D700F0812C /* Map */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,9 @@
 		A7FAA98E2AFD01B900CB1146 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A7FDFC9A2B039EB500BB0738 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		A7FDFC9C2B03B4B600BB0738 /* NotesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesEditorView.swift; sourceTree = "<group>"; };
+		C1D7821A2B0649E100B551AE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTourSheetView.swift; sourceTree = "<group>"; };
+		C1D7821E2B07875A00B551AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C1DC74A32B056D7200BA039C /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		C1DC74A52B056E5E00BA039C /* MarkerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerModel.swift; sourceTree = "<group>"; };
 		C1DC74A82B056ED600BA039C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -134,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1DF60282AF998D700F0812C /* Map in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,7 @@
 				A7BE65E62AFC91D1002931FF /* PlaceModel.swift */,
 				C1DC74A32B056D7200BA039C /* SearchResultModel.swift */,
 				C1DC74A52B056E5E00BA039C /* MarkerModel.swift */,
+				C1D7821A2B0649E100B551AE /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */,
 				C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */,
 				58585C4B2B064A2C00BA6C3E /* AddHighlightView.swift */,
+				C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				C1DF60172AF995B900F0812C /* Assets.xcassets */,
+				C1D7821E2B07875A00B551AE /* Launch Screen.storyboard */,
 				A74EC6CB2B0254D700EB3217 /* Defaults */,
 				A74EC6F72B025BB200EB3217 /* Info.plist */,
 				A7250ABB2AFA7AC300B34A61 /* Manager */,
@@ -327,7 +334,6 @@
 			);
 			name = Mini3;
 			packageProductDependencies = (
-				C1DF60272AF998D700F0812C /* Map */,
 			);
 			productName = Mini3;
 			productReference = C1DF60102AF995B800F0812C /* Mini3.app */;
@@ -358,7 +364,6 @@
 			);
 			mainGroup = C1DF60072AF995B800F0812C;
 			packageReferences = (
-				C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */,
 			);
 			productRefGroup = C1DF60112AF995B800F0812C /* Products */;
 			projectDirPath = "";
@@ -380,6 +385,7 @@
 				A74EC6F12B025B4500EB3217 /* Poppins-Thin.ttf in Resources */,
 				A74EC6E22B025B4500EB3217 /* Poppins-ExtraLight.ttf in Resources */,
 				A74EC6F22B025B4500EB3217 /* Poppins-SemiBold.ttf in Resources */,
+				C1D7821F2B07875A00B551AE /* Launch Screen.storyboard in Resources */,
 				A74EC6EF2B025B4500EB3217 /* Poppins-Bold.ttf in Resources */,
 				A74EC6E32B025B4500EB3217 /* Poppins-ThinItalic.ttf in Resources */,
 				A74EC6E42B025B4500EB3217 /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -411,6 +417,7 @@
 				C1DC74A42B056D7200BA039C /* SearchResultModel.swift in Sources */,
 				C1DC74C32B058EEF00BA039C /* OnboardingSecondPage.swift in Sources */,
 				A74EC6CD2B0254E100EB3217 /* Color.swift in Sources */,
+				C1D7821B2B0649E100B551AE /* CategoryModel.swift in Sources */,
 				C1DF60162AF995B800F0812C /* ContentView.swift in Sources */,
 				A7250ABA2AFA78FD00B34A61 /* TourModel.swift in Sources */,
 				C1DC74B72B05700700BA039C /* AddStopSheetView.swift in Sources */,
@@ -420,6 +427,7 @@
 				C1DC74A62B056E5E00BA039C /* MarkerModel.swift in Sources */,
 				A7250ABD2AFA7AD000B34A61 /* TourManager.swift in Sources */,
 				C1DC74B52B056F7300BA039C /* SearchLocationServiceFactory.swift in Sources */,
+				C1D7821D2B0651BE00B551AE /* AddTourSheetView.swift in Sources */,
 				C1DC74B32B056F5F00BA039C /* SearchLocationService.swift in Sources */,
 				C1DC74BD2B05723500BA039C /* SearchLocationView.swift in Sources */,
 				C1DC74AB2B056EEB00BA039C /* MapViewModel.swift in Sources */,
@@ -574,13 +582,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7P886DJU8X;
+				DEVELOPMENT_TEAM = U6ZXY7569L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Itinotes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,13 +613,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7P886DJU8X;
+				DEVELOPMENT_TEAM = U6ZXY7569L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Itinotes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,25 +658,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pauljohanneskraft/Map";
-			requirement = {
-				kind = exactVersion;
-				version = 0.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C1DF60272AF998D700F0812C /* Map */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C1DF60262AF998D700F0812C /* XCRemoteSwiftPackageReference "Map" */;
-			productName = Map;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */ = {
