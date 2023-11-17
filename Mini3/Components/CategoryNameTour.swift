@@ -41,6 +41,6 @@ struct CategoryNameTour: View {
     }
 
 
-//#Preview {
-//    CategoryNameTour(category: "Culture", icon: "mic.circle.fill")
-//}
+#Preview {
+    CategoryNameTour(category: "Culture", icon: "mic.circle.fill", selected: true, categorySelected: .constant("Culture"))
+}

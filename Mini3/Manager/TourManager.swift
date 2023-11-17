@@ -64,7 +64,7 @@ class TourManager: ObservableObject {
         controller.save()
     }
     
-    func editTour(id: UUID, name: String?) {
+    func editTour(id: UUID, name: String?, category: String?) {
         let fetchRequest: NSFetchRequest<Tour> = Tour.fetchRequest()
 
         do {
@@ -72,6 +72,7 @@ class TourManager: ObservableObject {
             _ = tours.map { tourEdit in
                 if tourEdit.id == id{
                     tourEdit.name = name
+                    tourEdit.category = category ?? tourEdit.category
                 }
                 
             }

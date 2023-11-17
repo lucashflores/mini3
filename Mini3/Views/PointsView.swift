@@ -16,10 +16,12 @@ struct PointsView: View {
     let tourId: UUID
     
     @State private var tourName: String = ""
-    @State private var selectedCategory: String = ""
+    @State private var categorySelected: String = ""
     
     @State private var placeModels: [PlaceModel] = []
     @State private var placeName: String = ""
+    
+    @State private var category: String = ""
     
     @State private var draggingItem: String? = ""
     @State private var isEditMode = false
@@ -59,7 +61,7 @@ struct PointsView: View {
                 .foregroundColor(Color.subTitleColor)
                 .padding(.horizontal, 16)
                 
-                Text(tourManager.getTourCategory(tourId: tourId))
+//                Text(tourManager.getTourCategory(tourId: tourId))
             }
             
 //            TextField("Enter tour name: ", text: $placeName)
@@ -145,6 +147,7 @@ struct PointsView: View {
         }
         .padding(.top, 16)
        .onAppear {
+           category = tourManager.getTourCategory(tourId: tourId)
            update()
        }
        .sheet(isPresented: $noteSheet){
@@ -162,24 +165,24 @@ struct PointsView: View {
                        .multilineTextAlignment(.center)
                        .padding(20)
                    
-//                   VStack {
-//                       HStack(spacing: 2) {
-//                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
-//                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
-//                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
-//                       }
-//                       HStack(spacing: 2) {
-//                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
-//                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
-//                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
-//                       }
-//                   }
-//                   .padding(.bottom, 32)
+                   VStack {
+                       HStack(spacing: 2) {
+                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon, categorySelected: $categorySelected)
+                       }
+                       HStack(spacing: 2) {
+                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon, categorySelected: $categorySelected)
+                       }
+                   }
+                   .padding(.bottom, 32)
                    
                    
                    Button("Save tour name") {
                        editNameSheet = false
-                       tourManager.editTour(id: tourId, name: tourName)
+                       tourManager.editTour(id: tourId, name: tourName, category: categorySelected)
 //                       newTourId = addTour()
 //                       isButtonTapped = true
                    }

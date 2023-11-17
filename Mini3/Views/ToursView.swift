@@ -107,13 +107,17 @@ struct ToursView: View {
                 Text(tourModel.name)
                     .font(.appCardsTitle)
                     .foregroundColor(.white)
-
                 
-                ZStack(alignment: .center){
-                    StopPoints()
-                    Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
-                        .frame(width: 25, height: 24, alignment: .trailing)
-                        .foregroundStyle(.white)
+                HStack{
+                    
+                    ZStack(alignment: .center){
+                        StopPoints()
+                        Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
+                            .frame(width: 25, height: 24, alignment: .trailing)
+                            .foregroundStyle(.white)
+                    }
+                    
+                    Categories(category: tourModel.category)
                 }
                 
                 
@@ -136,11 +140,6 @@ struct ToursView: View {
         tourManager.deleteTour(tourId: id)
         update()
     }   
-    
-    func editTour(id: UUID, name: String?){
-        tourManager.editTour(id: id, name: name)
-        update()
-    }
     
     func update() {
         
