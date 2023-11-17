@@ -12,7 +12,8 @@ struct ToursView: View {
     @EnvironmentObject var tourManager: TourManager
     
     @State private var tourModels: [TourModel] = []
-    @State private var tourName: String = ""
+    @State private var tourName: String = "My Tour"
+    @State private var selectedCategory: String = "No category"
     
     @State private var newTourSheet: Bool = false
     
@@ -20,7 +21,7 @@ struct ToursView: View {
     @State private var isButtonTapped = false
     @State private var newTourId: UUID?
     
-    @State var draggedItem: TourModel = TourModel(name: "Aleatorio")
+    @State var draggedItem: TourModel = TourModel(name: "Aleatorio", category: "No Category")
     
     var body: some View {
         NavigationStack {
@@ -90,7 +91,7 @@ struct ToursView: View {
 //                .navigationTitle("All Tours")
 //                .background(.red)
                 .sheet(isPresented: $newTourSheet) {
-                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, addTour: addTour)
+                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, categorySelected: $selectedCategory, addTour: addTour)
                     //           .interactiveDismissDisabled()
                 }
                 
@@ -106,13 +107,17 @@ struct ToursView: View {
                 Text(tourModel.name)
                     .font(.appCardsTitle)
                     .foregroundColor(.white)
-
                 
-                ZStack(alignment: .center){
-                    StopPoints()
-                    Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
-                        .frame(width: 25, height: 24, alignment: .trailing)
-                        .foregroundStyle(.white)
+                HStack{
+                    
+                    ZStack(alignment: .center){
+                        StopPoints()
+                        Text(String(tourManager.getPlacesQuantity(tourId: tourModel.id)))
+                            .frame(width: 25, height: 24, alignment: .trailing)
+                            .foregroundStyle(.white)
+                    }
+                    
+                    Categories(category: tourModel.category)
                 }
                 
                 
@@ -124,7 +129,7 @@ struct ToursView: View {
     
     func addTour() -> UUID {
 //        newTourSheet = false
-        let newTour = TourModel(name: tourName.isEmpty ? "My Tour" : tourName)
+        let newTour = TourModel(name: tourName.isEmpty? "MyTour" :  tourName, category: selectedCategory)
         tourManager.createTour(tour: newTour)
         update()
         return newTour.id
@@ -135,11 +140,6 @@ struct ToursView: View {
         tourManager.deleteTour(tourId: id)
         update()
     }   
-    
-    func editTour(id: UUID, name: String?){
-        tourManager.editTour(id: id, name: name)
-        update()
-    }
     
     func update() {
         

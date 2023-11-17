@@ -12,6 +12,7 @@ struct AddTourSheetView: View {
     @Binding var newTourSheet: Bool
     @Binding var newTourId: UUID?
     @Binding var isButtonTapped: Bool
+    @Binding var categorySelected: String
     var addTour: () -> UUID
     
     @FocusState private var tourNameInFocus: Bool
@@ -32,14 +33,14 @@ struct AddTourSheetView: View {
             
             VStack {
                 HStack(spacing: 2) {
-                    CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
-                    CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
-                    CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
+                    CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon, categorySelected: $categorySelected)
+                    CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon, categorySelected: $categorySelected)
+                    CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon, categorySelected: $categorySelected)
                 }
                 HStack(spacing: 2) {
-                    CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
-                    CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
-                    CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
+                    CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon, categorySelected: $categorySelected)
+                    CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon, categorySelected: $categorySelected)
+                    CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon, categorySelected: $categorySelected)
                 }
             }
             .padding(.bottom, 32)

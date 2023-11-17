@@ -12,4 +12,5 @@ struct TourModel: Equatable {
     var name: String
 //    var picture: String? // picture name - optional
     var description: String? // description - optional
+    var category: String
 }

@@ -16,13 +16,20 @@ struct PointsView: View {
     let tourId: UUID
     
     @State private var tourName: String = ""
+    @State private var categorySelected: String = CategoryModel.categories[5].name
+    
     @State private var placeModels: [PlaceModel] = []
     @State private var placeName: String = ""
+    
+    
+    @State private var category: String = ""
     
     @State private var draggingItem: String? = ""
     @State private var isEditMode = false
     @State private var editNameSheet = false
     @State private var isImageVisible = false
+    
+    @State private var categoryAvailable = true
     
     @State private var selectedHighlight: PlaceModel = PlaceModel(name: "padrao", orderNumber: 0, title: "", latitude: 1, longitude: 1)
     
@@ -54,6 +61,12 @@ struct PointsView: View {
                 }
                 .foregroundColor(Color.subTitleColor)
                 .padding(.horizontal, 16)
+                .padding(.bottom, 6)
+                
+                Categories(category: categorySelected)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 0)
+//                Text(tourManager.getTourCategory(tourId: tourId))
             }
             
 //            TextField("Enter tour name: ", text: $placeName)
@@ -63,37 +76,40 @@ struct PointsView: View {
 //                Text("adicionar")
 //            }
             
+            
             VStack(spacing: 10) {
-                HStack(){
-                    Spacer()
-                    Button{
-                        if isEditMode {
-                            placesManager.saveOrder(placesList: placeModels, tourId: tourId)
-                            update()
-                        }
-                        isEditMode.toggle()
-                        withAnimation {
-                            isImageVisible.toggle() // Toggle the visibility with animation
-                        }
-                    } label: {
-                        if isEditMode {
-                            Text("Save")
-                        } else {
-                            Text("Edit")
-                        }
-                    }
-                    .foregroundStyle(.blue)
-                }
-                .padding(.vertical, 10)
-                .padding(.horizontal, 16)
                 
-                ScrollView(.vertical){
-                    LazyVGrid(columns: [GridItem()]){
-                        ForEach(Array(placeModels.enumerated()), id: \.element.id) { index, place in
-                            
+                if placeModels.count > 0 {
+                    HStack(){
+                        Spacer()
+                        Button{
                             if isEditMode {
-                                PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count]
-                                )
+                                placesManager.saveOrder(placesList: placeModels, tourId: tourId)
+                                update()
+                            }
+                            isEditMode.toggle()
+                            withAnimation {
+                                isImageVisible.toggle() // Toggle the visibility with animation
+                            }
+                        } label: {
+                            if isEditMode {
+                                Text("Save")
+                            } else {
+                                Text("Edit")
+                            }
+                        }
+                        .foregroundStyle(.blue)
+                    }
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 16)
+                    
+                    ScrollView(.vertical){
+                        LazyVGrid(columns: [GridItem()]){
+                            ForEach(Array(placeModels.enumerated()), id: \.element.id) { index, place in
+                                
+                                if isEditMode {
+                                    PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count]
+                                    )
                                     .draggable(place.name){
                                         RoundedRectangle(cornerRadius: 10)
                                             .fill(.ultraThinMaterial)
@@ -116,29 +132,48 @@ struct PointsView: View {
                                             }
                                         }
                                     }
-                            } else {
-                                PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count])
+                                } else {
+                                    PlaceItem(place: place, backgroundColor: backgroundColors[index % backgroundColors.count])
+                                }
+                                
+                            }
+                            NavigationLink(destination: MapView(tourId: tourId)){
+                                AddPlace()
                             }
                             
                         }
-                        NavigationLink(destination: MapView(tourId: tourId)){
-                            AddPlace()
-                        }
+                        .padding(.horizontal, 12)
+                        
                         
                     }
-                    .padding(.horizontal, 12)
+                    .frame(maxWidth: .infinity)
                     
-                    
-                }
-                .frame(maxWidth: .infinity)
+                    Spacer()
+                } else {
+                    Text("Add your tour highlights and start taking notes to get the best out of Itinote!")
+//                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .font(.appBody)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 20)
                 
-                Spacer()
+                
+                    NavigationLink(destination: MapView(tourId: tourId)){
+                        CardHighlightExemple()
+                    }
+                    
+                    Spacer()
+                }
             }
             
             
         }
         .padding(.top, 16)
        .onAppear {
+           categorySelected = tourManager.getTourCategory(tourId: tourId)
+           if categorySelected.isEmpty {
+               categorySelected = "No category"
+           }
            update()
        }
        .sheet(isPresented: $noteSheet){
@@ -158,14 +193,14 @@ struct PointsView: View {
                    
                    VStack {
                        HStack(spacing: 2) {
-                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
-                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
-                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
+                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon, categorySelected: $categorySelected)
                        }
                        HStack(spacing: 2) {
-                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
-                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
-                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
+                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon, categorySelected: $categorySelected)
+                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon, categorySelected: $categorySelected)
                        }
                    }
                    .padding(.bottom, 32)
@@ -173,7 +208,7 @@ struct PointsView: View {
                    
                    Button("Save tour name") {
                        editNameSheet = false
-                       tourManager.editTour(id: tourId, name: tourName)
+                       tourManager.editTour(id: tourId, name: tourName, category: categorySelected)
 //                       newTourId = addTour()
 //                       isButtonTapped = true
                    }
@@ -199,6 +234,7 @@ struct PointsView: View {
        }
        .onAppear(){
            tourName = getTourName()
+           categorySelected = tourManager.getTourCategory(tourId: tourId)
        }
 //       .navigationTitle("Add Stops")
         

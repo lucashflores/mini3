@@ -25,6 +25,7 @@ class TourManager: ObservableObject {
         newTour.id = tour.id
         newTour.name = tour.name
         newTour.desc = tour.description
+        newTour.category = tour.category
 //        newTour.picture = tour.picture + TO-DO
         
         
@@ -38,6 +39,7 @@ class TourManager: ObservableObject {
         tour.id = tourUpdate.id
         tour.name = tourUpdate.name
         tour.desc = tourUpdate.description
+        tour.category = tourUpdate.category
 //        tour.picture = tourUpdate.picture + TO-DO
 
 //        persistenceController.save() + TO-DO
@@ -62,7 +64,7 @@ class TourManager: ObservableObject {
         controller.save()
     }
     
-    func editTour(id: UUID, name: String?) {
+    func editTour(id: UUID, name: String?, category: String?) {
         let fetchRequest: NSFetchRequest<Tour> = Tour.fetchRequest()
 
         do {
@@ -70,6 +72,7 @@ class TourManager: ObservableObject {
             _ = tours.map { tourEdit in
                 if tourEdit.id == id{
                     tourEdit.name = name
+                    tourEdit.category = category ?? tourEdit.category
                 }
                 
             }
@@ -90,7 +93,8 @@ class TourManager: ObservableObject {
                 return TourModel(
                     id: tour.id ?? UUID(),
                     name: tour.name ?? "", // TO-DO: picture
-                    description: tour.desc
+                    description: tour.desc,
+                    category: tour.category ?? "No category"
                 )
             }
             return tourModels
@@ -138,6 +142,26 @@ class TourManager: ObservableObject {
             for t in tours {
                 if t.id == tourId {
                     return t.name ?? ""
+                }
+            }
+        } catch {
+            print("Error fetching places and converting to placeModel: \(error)")
+            
+            
+            return ""
+            
+        }
+        return ""
+    }
+    
+    func getTourCategory(tourId: UUID) -> String {
+        let fetchRequest: NSFetchRequest<Tour> = Tour.fetchRequest()
+        
+        do {
+            let tours = try controller.container.viewContext.fetch(fetchRequest)
+            for t in tours {
+                if t.id == tourId {
+                    return t.category ?? ""
                 }
             }
         } catch {
