@@ -16,6 +16,8 @@ struct PointsView: View {
     let tourId: UUID
     
     @State private var tourName: String = ""
+    @State private var selectedCategory: String = ""
+    
     @State private var placeModels: [PlaceModel] = []
     @State private var placeName: String = ""
     
@@ -23,6 +25,8 @@ struct PointsView: View {
     @State private var isEditMode = false
     @State private var editNameSheet = false
     @State private var isImageVisible = false
+    
+    @State private var categoryAvailable = true
     
     @State private var selectedHighlight: PlaceModel = PlaceModel(name: "padrao", orderNumber: 0, title: "", latitude: 1, longitude: 1)
     
@@ -54,6 +58,8 @@ struct PointsView: View {
                 }
                 .foregroundColor(Color.subTitleColor)
                 .padding(.horizontal, 16)
+                
+                Text(tourManager.getTourCategory(tourId: tourId))
             }
             
 //            TextField("Enter tour name: ", text: $placeName)
@@ -156,19 +162,19 @@ struct PointsView: View {
                        .multilineTextAlignment(.center)
                        .padding(20)
                    
-                   VStack {
-                       HStack(spacing: 2) {
-                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
-                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
-                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
-                       }
-                       HStack(spacing: 2) {
-                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
-                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
-                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
-                       }
-                   }
-                   .padding(.bottom, 32)
+//                   VStack {
+//                       HStack(spacing: 2) {
+//                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
+//                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
+//                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
+//                       }
+//                       HStack(spacing: 2) {
+//                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
+//                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
+//                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
+//                       }
+//                   }
+//                   .padding(.bottom, 32)
                    
                    
                    Button("Save tour name") {
@@ -199,6 +205,7 @@ struct PointsView: View {
        }
        .onAppear(){
            tourName = getTourName()
+//           selectedCategory = 
        }
 //       .navigationTitle("Add Stops")
         

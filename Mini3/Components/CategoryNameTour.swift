@@ -11,23 +11,29 @@ struct CategoryNameTour: View {
     var category: String
     var icon: String
     @State var selected = false
+    @Binding var categorySelected: String
     
     var body: some View {
         
         Button {
-            selected.toggle()
+            if categorySelected == category {
+                categorySelected = ""
+            } else {
+                categorySelected = category
+            }
+            
         } label: {
                 HStack(){
                     Image(systemName: icon)
                         .font(.system(size: 16))
-                        .foregroundColor(selected ? .white : .itiAzulEscuro)
+                        .foregroundColor(categorySelected == category ? .white : .itiAzulEscuro)
                     Text(category)
                         .font(.categoryName)
-                        .foregroundColor(selected ? .white : .itiAzulEscuro)
+                        .foregroundColor(categorySelected == category ? .white : .itiAzulEscuro)
                     }
                 .padding(.vertical, 3)
                 .padding(.horizontal, 9)
-                .background(selected ? .itiAzulEscuro : Color(uiColor: .systemFill))
+                .background(categorySelected == category ? .itiAzulEscuro : Color(uiColor: .systemFill))
                 .cornerRadius(20)
                 
             }
@@ -35,6 +41,6 @@ struct CategoryNameTour: View {
     }
 
 
-#Preview {
-    CategoryNameTour(category: "Culture", icon: "mic.circle.fill")
-}
+//#Preview {
+//    CategoryNameTour(category: "Culture", icon: "mic.circle.fill")
+//}

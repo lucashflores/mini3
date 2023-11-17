@@ -13,6 +13,7 @@ struct ToursView: View {
     
     @State private var tourModels: [TourModel] = []
     @State private var tourName: String = "My Tour"
+    @State private var selectedCategory: String = "No Category"
     
     @State private var newTourSheet: Bool = false
     
@@ -20,7 +21,7 @@ struct ToursView: View {
     @State private var isButtonTapped = false
     @State private var newTourId: UUID?
     
-    @State var draggedItem: TourModel = TourModel(name: "Aleatorio")
+    @State var draggedItem: TourModel = TourModel(name: "Aleatorio", category: "No Category")
     
     var body: some View {
         NavigationStack {
@@ -90,7 +91,7 @@ struct ToursView: View {
 //                .navigationTitle("All Tours")
 //                .background(.red)
                 .sheet(isPresented: $newTourSheet) {
-                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, addTour: addTour)
+                    AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, categorySelected: $selectedCategory, addTour: addTour)
                     //           .interactiveDismissDisabled()
                 }
                 
@@ -124,7 +125,7 @@ struct ToursView: View {
     
     func addTour() -> UUID {
 //        newTourSheet = false
-        let newTour = TourModel(name: tourName)
+        let newTour = TourModel(name: tourName, category: selectedCategory)
         tourManager.createTour(tour: newTour)
         update()
         return newTour.id

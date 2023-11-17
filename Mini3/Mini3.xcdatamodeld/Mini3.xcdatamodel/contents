@@ -13,6 +13,7 @@
     </entity>
     <entity name="Point" representedClassName="Point" syncable="YES" codeGenerationType="class"/>
     <entity name="Tour" representedClassName="Tour" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
