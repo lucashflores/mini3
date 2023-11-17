@@ -30,17 +30,19 @@ struct ToursView: View {
             }
             .hidden()
             
+            VStack(spacing: -8){
+                Text("See")
+                    .font(Font.appBoldTitle)
+                    .frame(width: 350, alignment: .leading)
+                Text("your tours")
+                    .font(Font.appTitle)
+                    .frame(width: 350, alignment: .leading)
+            }
+            .padding()
+            .foregroundColor(Color.black)
+            
             ScrollView(){
-                VStack(spacing: -8){
-                    Text("See")
-                        .font(Font.appBoldTitle)
-                        .frame(width: 350, alignment: .leading)
-                    Text("your tours")
-                        .font(Font.appTitle)
-                        .frame(width: 350, alignment: .leading)
-                }
-                .padding()
-                .foregroundColor(Color.black)
+                
                 
                 
                 LazyVStack(spacing:12){
@@ -85,8 +87,8 @@ struct ToursView: View {
                     Spacer()
                     
                 }
-                .navigationTitle("All Tours")
-                .background(.red)
+//                .navigationTitle("All Tours")
+//                .background(.red)
                 .sheet(isPresented: $newTourSheet) {
                     AddTourSheetView(tourName: $tourName, newTourSheet: $newTourSheet, newTourId: $newTourId, isButtonTapped: $isButtonTapped, addTour: addTour)
                     //           .interactiveDismissDisabled()

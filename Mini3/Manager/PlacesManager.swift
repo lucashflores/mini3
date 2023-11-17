@@ -21,12 +21,13 @@ class PlacesManager: ObservableObject {
     func createPoint(place: PlaceModel, placeCount: Int) {
         
         let newPlace = Place(context: controller.container.viewContext)
+        let places = fetchAllPlaceByTour(tourId: place.tourId ?? UUID())
         
         newPlace.id = place.id
         newPlace.name = place.name
         newPlace.notes = place.notes
         newPlace.tour = getTour(tourId: place.tourId!)
-        newPlace.orderNumber = Int16(placeCount)
+        newPlace.orderNumber = Int16(places.count)
         newPlace.title = place.title
         newPlace.latitude = place.latitude
         newPlace.longitude = place.longitude

@@ -156,12 +156,19 @@ struct PointsView: View {
                        .multilineTextAlignment(.center)
                        .padding(20)
                    
-                   LazyHGrid(rows: [GridItem(.adaptive(minimum: 110, maximum: 40))], content: {
-                       CategoryNameTour()
-                       CategoryNameTour()
-                       CategoryNameTour()
-                       CategoryNameTour()
-                   })
+                   VStack {
+                       HStack(spacing: 2) {
+                           CategoryNameTour(category: CategoryModel.categories[0].name, icon: CategoryModel.categories[0].icon)
+                           CategoryNameTour(category: CategoryModel.categories[1].name, icon: CategoryModel.categories[1].icon)
+                           CategoryNameTour(category: CategoryModel.categories[2].name, icon: CategoryModel.categories[2].icon)
+                       }
+                       HStack(spacing: 2) {
+                           CategoryNameTour(category: CategoryModel.categories[3].name, icon: CategoryModel.categories[3].icon)
+                           CategoryNameTour(category: CategoryModel.categories[4].name, icon: CategoryModel.categories[4].icon)
+                           CategoryNameTour(category: CategoryModel.categories[5].name, icon: CategoryModel.categories[5].icon)
+                       }
+                   }
+                   .padding(.bottom, 32)
                    
                    
                    Button("Save tour name") {
