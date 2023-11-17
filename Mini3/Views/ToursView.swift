@@ -12,7 +12,7 @@ struct ToursView: View {
     @EnvironmentObject var tourManager: TourManager
     
     @State private var tourModels: [TourModel] = []
-    @State private var tourName: String = "My Tour"
+    @State private var tourName: String = ""
     
     @State private var newTourSheet: Bool = false
     
@@ -124,7 +124,7 @@ struct ToursView: View {
     
     func addTour() -> UUID {
 //        newTourSheet = false
-        let newTour = TourModel(name: tourName)
+        let newTour = TourModel(name: tourName.isEmpty ? "My Tour" : tourName)
         tourManager.createTour(tour: newTour)
         update()
         return newTour.id
