@@ -14,13 +14,17 @@ struct AddTourSheetView: View {
     @Binding var isButtonTapped: Bool
     var addTour: () -> UUID
     
+    @FocusState private var tourNameInFocus: Bool
+    
     var body: some View {
         VStack() {
             Text("Give your tour a name")
                 .font(.appBody)
             
             TextField("My Tour", text: $tourName)
+                .focused($tourNameInFocus)
                 .font(.largeTitle)
+//                .foregroundColor(Color(uiColor: .systemGray3))
                 .multilineTextAlignment(.center)
                 .padding(20)
                 .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.horizontal, 64).padding(.top).foregroundStyle(.tertiary))
@@ -59,6 +63,9 @@ struct AddTourSheetView: View {
             .foregroundColor(.white)
             .cornerRadius(30)
         }
+        .onAppear {
+            tourNameInFocus = true
+        }
         .padding()
         .presentationDetents([.fraction(0.8), .large])
         .presentationDragIndicator(.visible)
@@ -66,7 +73,7 @@ struct AddTourSheetView: View {
 }
 
 #Preview {
-    AddTourSheetView(tourName: .constant("My Tour"), newTourSheet: .constant(true), newTourId: .constant(UUID()), isButtonTapped: .constant(false)) {
+    AddTourSheetView(tourName: .constant(""), newTourSheet: .constant(true), newTourId: .constant(UUID()), isButtonTapped: .constant(false)) {
         return UUID()
     }
 }

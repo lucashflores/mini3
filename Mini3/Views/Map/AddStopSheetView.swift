@@ -16,10 +16,12 @@ struct AddStopSheetView: View {
     @Binding var selectedMarker: UUID?
     @Binding var presentFeedbackView: Bool
     
+    @FocusState private var placeNameInFocus: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
             TextField("Place name", text: $placeName)
+                .focused($placeNameInFocus)
                 .font(.system(size: 18, weight: .bold))
                 .padding(.top, 16)
             Text(mapViewModel.temporaryMarker?.title ?? "")
@@ -47,6 +49,9 @@ struct AddStopSheetView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 35))
             }
             .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .onAppear {
+            placeNameInFocus = true
         }
         .padding()
         .background(Color.cinzaSheet)

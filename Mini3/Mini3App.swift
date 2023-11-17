@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Mini3App: App {
+    struct Mini3App: App {
     
 
     var body: some Scene {
