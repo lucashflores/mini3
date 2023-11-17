@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		583216B12B039CE50023D286 /* CardTourDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583216B02B039CE50023D286 /* CardTourDefault.swift */; };
 		583216B32B03BDF10023D286 /* CardTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583216B22B03BDF10023D286 /* CardTour.swift */; };
+		58585C4C2B064A2C00BA6C3E /* AddHighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C4B2B064A2C00BA6C3E /* AddHighlightView.swift */; };
+		58585C4E2B064AC000BA6C3E /* CardHighlightExemple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58585C4D2B064AC000BA6C3E /* CardHighlightExemple.swift */; };
 		585D6DDC2B05148100C66FE9 /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D6DDB2B05148100C66FE9 /* CategoriesCard.swift */; };
 		585D6DDE2B0514B500C66FE9 /* StopPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D6DDD2B0514B500C66FE9 /* StopPoints.swift */; };
 		585D6DE02B05436400C66FE9 /* CategoryNameTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585D6DDF2B05436400C66FE9 /* CategoryNameTour.swift */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		583216B02B039CE50023D286 /* CardTourDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTourDefault.swift; sourceTree = "<group>"; };
 		583216B22B03BDF10023D286 /* CardTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTour.swift; sourceTree = "<group>"; };
+		58585C4B2B064A2C00BA6C3E /* AddHighlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHighlightView.swift; sourceTree = "<group>"; };
+		58585C4D2B064AC000BA6C3E /* CardHighlightExemple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHighlightExemple.swift; sourceTree = "<group>"; };
 		585D6DDB2B05148100C66FE9 /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		585D6DDD2B0514B500C66FE9 /* StopPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPoints.swift; sourceTree = "<group>"; };
 		585D6DDF2B05436400C66FE9 /* CategoryNameTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameTour.swift; sourceTree = "<group>"; };
@@ -145,8 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				585D6DDA2B05144700C66FE9 /* CardTourComponents */,
-				585D6DDF2B05436400C66FE9 /* CategoryNameTour.swift */,
 				583216B22B03BDF10023D286 /* CardTour.swift */,
+				58585C4D2B064AC000BA6C3E /* CardHighlightExemple.swift */,
 				583216B02B039CE50023D286 /* CardTourDefault.swift */,
 			);
 			path = Components;
@@ -230,6 +234,7 @@
 				C1DC74BE2B05867500BA039C /* OnboardingView.swift */,
 				C1DC74C02B058D2300BA039C /* OnboardingFirstPage.swift */,
 				C1DC74C22B058EEF00BA039C /* OnboardingSecondPage.swift */,
+				58585C4B2B064A2C00BA6C3E /* AddHighlightView.swift */,
 				C1D7821C2B0651BE00B551AE /* AddTourSheetView.swift */,
 			);
 			path = Views;
@@ -294,6 +299,7 @@
 				583216AF2B039C1D0023D286 /* Components */,
 				C1DF601E2AF995B900F0812C /* Mini3.xcdatamodeld */,
 				C1DF60132AF995B800F0812C /* Mini3App.swift */,
+				585D6DDF2B05436400C66FE9 /* CategoryNameTour.swift */,
 				A7250AB82AFA78F000B34A61 /* Model */,
 				C1DF601C2AF995B900F0812C /* Persistence.swift */,
 				C1DF60192AF995B900F0812C /* Preview Content */,
@@ -430,6 +436,7 @@
 				A7FDFC9B2B039EB500BB0738 /* Image.swift in Sources */,
 				A7FDFC9D2B03B4B600BB0738 /* NotesEditorView.swift in Sources */,
 				C1DF60142AF995B800F0812C /* Mini3App.swift in Sources */,
+				58585C4E2B064AC000BA6C3E /* CardHighlightExemple.swift in Sources */,
 				C1DC74B92B05711E00BA039C /* FinishAddingStopsView.swift in Sources */,
 				A7BE65E52AFC915D002931FF /* PlacesManager.swift in Sources */,
 				A74EC6F62B025B6D00EB3217 /* Font.swift in Sources */,
@@ -439,6 +446,7 @@
 				A7BE65E72AFC91D1002931FF /* PlaceModel.swift in Sources */,
 				C1DC74BF2B05867500BA039C /* OnboardingView.swift in Sources */,
 				A7250ABF2AFA7D3200B34A61 /* ToursView.swift in Sources */,
+				58585C4C2B064A2C00BA6C3E /* AddHighlightView.swift in Sources */,
 				585D6DDE2B0514B500C66FE9 /* StopPoints.swift in Sources */,
 				583216B32B03BDF10023D286 /* CardTour.swift in Sources */,
 			);
