@@ -16,7 +16,7 @@ public struct MapView: View {
     @State var lastMarkerChange: Date = Date.now
     @State var presentFeedbackView = false
     @State var touchDisabled = false
-    
+
     public func calculateDistance(firstPoint: CLLocationCoordinate2D, secondPoint: CLLocationCoordinate2D) -> Double {
         return sqrt(pow((firstPoint.latitude - secondPoint.latitude), 2) + pow((firstPoint.longitude - secondPoint.longitude), 2)) * 1000000
     }
@@ -131,7 +131,7 @@ public struct MapView: View {
                     
                     
                     
-                    if (viewModel.markers.count >= 2 && !isShowingAddStopSheet && !self.presentFeedbackView) {
+                    if (!isShowingAddStopSheet && !self.presentFeedbackView) {
                         FinishAddingStopsView()
                             .onTapGesture {
                                print("dismiss?")
@@ -149,6 +149,10 @@ public struct MapView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.position = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -25.4284, longitude: -49.2733), latitudinalMeters: 0.05, longitudinalMeters: 0.05))
+        }
+        .navigationTitle("Add Stops")
         .searchable(text: $viewModel.searchQuery)
     }
 }
