@@ -23,7 +23,7 @@ struct CategoryNameTour: View {
             }
             
         } label: {
-                HStack(){
+            HStack(spacing: 6) {
                     Image(systemName: icon)
                         .font(.system(size: 16))
                         .foregroundColor(categorySelected == category ? .white : .itiAzulEscuro)

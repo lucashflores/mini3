@@ -17,7 +17,7 @@ class MapViewModel: ObservableObject {
     @Published var searchResults = [SearchResultModel]()
     @Published var searchQuery: String = ""
     @Published var temporaryMarker: MarkerModel?
-    @Published var markers: [MarkerModel]
+    @Published var markers: [MarkerModel] = [MarkerModel]()
     let searchPlaceHolder: String = "Search a location"
     
     private let searchService: SearchLocationService = SearchLocationServiceFactory.make()
@@ -26,7 +26,7 @@ class MapViewModel: ObservableObject {
     static public let shared = MapViewModel()
     
     private init() {
-        markers = MarkerModel.defaultMarkers
+        position = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -25.4284, longitude: -49.2733), latitudinalMeters: 0.05, longitudinalMeters: 0.05))
         
         $searchQuery
             .debounce(for: 0.5, scheduler: RunLoop.main)

@@ -54,8 +54,8 @@ struct AddStopSheetView: View {
             placeNameInFocus = true
         }
         .padding()
-        .background(Color.cinzaSheet)
-        .presentationBackground(.regularMaterial)
+        .background(Color.cinzaSheet.ignoresSafeArea())
+        .presentationBackground(Color.cinzaSheet)
         .presentationBackgroundInteraction(.enabled(upThrough: .large))
         .presentationDetents([.height(200)])
         .presentationDragIndicator(.visible)
