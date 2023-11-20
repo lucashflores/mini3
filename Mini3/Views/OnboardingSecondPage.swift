@@ -34,7 +34,7 @@ struct OnboardingSecondPage: View {
                         .lineSpacing(5)
                 }
                 
-                Text("1. Build your own tour with its stops\n2. Jot down the key highlights about them\n3. Check you notes whenever you need!")
+                Text("1. Build your own tour with its stops\n2. Jot down the key highlights about them\n3. Check your notes whenever you need!")
                     .lineLimit(nil)
                     .font(.onboardingSubText)
                     .foregroundStyle(.white)
