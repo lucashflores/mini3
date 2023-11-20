@@ -34,7 +34,7 @@ struct PointsView: View {
     @State private var selectedHighlight: PlaceModel = PlaceModel(name: "padrao", orderNumber: 0, title: "", latitude: 1, longitude: 1)
     
     @State private var noteSheet = false
-    let backgroundColors: [Color] = [Color.itiAzul, Color.itiAzulEscuro, Color.itiAlaranjado]
+    let backgroundColors: [Color] = [Color.itiAzul, Color.itiAzulEscuro, Color.itiRoxo, Color.itiAlaranjado]
     
     var body: some View {
         
